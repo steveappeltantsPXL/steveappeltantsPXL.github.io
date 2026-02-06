@@ -1,4 +1,252 @@
-# steveappeltantsPXL.github.io
-Applied research in interoperability, accessibility, and legal software applications, from blueprint design through operational deployment via research-driven development, pilot studies, native- and cross-platform solutions. 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steve - Software Developer Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .skill-tag { @apply bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium; }
+        .section-title { @apply text-3xl font-bold text-gray-900 mb-6; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="app">
+        <div class="min-h-screen">
+            <!-- Header -->
+            <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+                <div class="max-w-6xl mx-auto px-6">
+                    <h1 class="text-5xl font-bold mb-4">{{ config.name }}</h1>
+                    <p class="text-xl text-blue-100 mb-6">{{ config.title }}</p>
+                    <p class="text-lg max-w-3xl">{{ config.bio }}</p>
+                    <div class="flex gap-4 mt-6">
+                        <a v-if="config.github" :href="`https://github.com/${config.github}`" target="_blank" 
+                           class="bg-white text-blue-600 px-6 py-2 rounded-lg font-medium hover:bg-blue-50 transition">
+                            GitHub Profile
+                        </a>
+                        <a v-if="config.linkedin" :href="config.linkedin" target="_blank"
+                           class="bg-blue-700 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-600 transition">
+                            LinkedIn
+                        </a>
+                        <a v-if="config.email" :href="`mailto:${config.email}`"
+                           class="bg-blue-700 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-600 transition">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </header>
 
-Core focus: healthcare systems integration, AI/ML-powered and application development.
+            <div class="max-w-6xl mx-auto px-6 py-12">
+                <!-- Skills Section -->
+                <section class="mb-16">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <div v-for="category in config.skills" :key="category.category" class="mb-6 last:mb-0">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-3">{{ category.category }}</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span v-for="skill in category.items" :key="skill" class="skill-tag">{{ skill }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section class="mb-16">
+                    <h2 class="section-title">Experience</h2>
+                    <div class="space-y-6">
+                        <div v-for="exp in config.experience" :key="exp.title" 
+                             class="bg-white rounded-lg shadow-md p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-900">{{ exp.title }}</h3>
+                                    <p class="text-gray-600">{{ exp.company }}</p>
+                                </div>
+                                <span class="text-sm text-gray-500">{{ exp.period }}</span>
+                            </div>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li v-for="item in exp.highlights" :key="item">{{ item }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section class="mb-16">
+                    <h2 class="section-title">Education</h2>
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <div v-for="edu in config.education" :key="edu.degree" class="mb-4 last:mb-0">
+                            <h3 class="text-xl font-semibold text-gray-900">{{ edu.degree }}</h3>
+                            <p class="text-gray-600">{{ edu.institution }}</p>
+                            <p class="text-sm text-gray-500">{{ edu.period }}</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Featured Projects Section -->
+                <section class="mb-16">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <div v-if="loading" class="text-center py-12">
+                        <p class="text-gray-600">Loading projects...</p>
+                    </div>
+                    <div v-else-if="error" class="bg-red-50 border border-red-200 rounded-lg p-6">
+                        <p class="text-red-800">{{ error }}</p>
+                    </div>
+                    <div v-else class="grid md:grid-cols-2 gap-6">
+                        <div v-for="repo in repositories" :key="repo.name" 
+                             class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900">{{ repo.name }}</h3>
+                                <span v-if="repo.language" 
+                                      class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">
+                                    {{ repo.language }}
+                                </span>
+                            </div>
+                            <p class="text-gray-600 mb-4">{{ repo.description || 'No description available' }}</p>
+                            <div class="flex gap-4 text-sm text-gray-500 mb-4">
+                                <span v-if="repo.stargazers_count" class="flex items-center gap-1">
+                                    ⭐ {{ repo.stargazers_count }}
+                                </span>
+                                <span v-if="repo.forks_count" class="flex items-center gap-1">
+                                    🔀 {{ repo.forks_count }}
+                                </span>
+                            </div>
+                            <a :href="repo.html_url" target="_blank" 
+                               class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                View on GitHub →
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Footer -->
+            <footer class="bg-gray-800 text-white py-8 mt-16">
+                <div class="max-w-6xl mx-auto px-6 text-center">
+                    <p>&copy; {{ new Date().getFullYear() }} {{ config.name }}. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    // ========== CONFIGURATION ==========
+                    // Edit this section with your information
+                    config: {
+                        name: 'Steve',
+                        title: 'Software Developer',
+                        bio: 'Specialized in healthcare technology applications with expertise in HL7/FHIR messaging systems and accessibility technology. Passionate about building AI/ML solutions that make a difference.',
+                        email: 'your.email@example.com',
+                        github: 'your-github-username',
+                        linkedin: 'https://linkedin.com/in/your-profile',
+                        
+                        // List the GitHub repo names you want to feature
+                        featuredRepos: [
+                            'repo-name-1',
+                            'repo-name-2',
+                            'repo-name-3'
+                        ],
+                        
+                        skills: [
+                            {
+                                category: 'Primary Languages',
+                                items: ['Kotlin', 'Vue.js', 'JavaScript', 'TypeScript']
+                            },
+                            {
+                                category: 'Secondary Languages',
+                                items: ['C#', 'ASP.NET', 'MAUI', 'PHP']
+                            },
+                            {
+                                category: 'Specializations',
+                                items: ['HL7/FHIR', 'Healthcare Technology', 'AI/ML', 'Accessibility Tech', 'MediaPipe', 'TensorFlow']
+                            },
+                            {
+                                category: 'Tools & Platforms',
+                                items: ['Docker', 'PostgreSQL', 'GitHub', 'Gradle', 'Kotlin Multiplatform']
+                            }
+                        ],
+                        
+                        experience: [
+                            {
+                                title: 'Software Developer',
+                                company: 'Your Company',
+                                period: '2020 - Present',
+                                highlights: [
+                                    'Developed orchestrator-agent services for healthcare interoperability',
+                                    'Built AI/ML applications for accessibility technology',
+                                    'Implemented HL7/FHIR messaging systems',
+                                    'Created cross-platform solutions using Kotlin Multiplatform'
+                                ]
+                            }
+                        ],
+                        
+                        education: [
+                            {
+                                degree: 'Bachelor of Applied Science in Software Management',
+                                institution: 'Your University',
+                                period: '2015 - 2019'
+                            }
+                        ]
+                    },
+                    // ========== END CONFIGURATION ==========
+                    
+                    repositories: [],
+                    loading: false,
+                    error: null
+                };
+            },
+            
+            mounted() {
+                this.fetchRepositories();
+            },
+            
+            methods: {
+                async fetchRepositories() {
+                    if (!this.config.github || this.config.featuredRepos.length === 0) {
+                        this.error = 'Please configure your GitHub username and featured repositories.';
+                        return;
+                    }
+                    
+                    this.loading = true;
+                    this.error = null;
+                    
+                    try {
+                        const repos = [];
+                        for (const repoName of this.config.featuredRepos) {
+                            const response = await fetch(
+                                `https://api.github.com/repos/${this.config.github}/${repoName}`
+                            );
+                            
+                            if (!response.ok) {
+                                console.error(`Failed to fetch ${repoName}:`, response.status);
+                                continue;
+                            }
+                            
+                            const data = await response.json();
+                            repos.push(data);
+                        }
+                        
+                        if (repos.length === 0) {
+                            this.error = 'No repositories found. Check your GitHub username and repo names.';
+                        } else {
+                            this.repositories = repos;
+                        }
+                    } catch (err) {
+                        this.error = `Error fetching repositories: ${err.message}`;
+                        console.error(err);
+                    } finally {
+                        this.loading = false;
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
