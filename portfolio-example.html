@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        .timeline-container {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: 55%;
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: 55%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            border: 4px solid #667eea;
+            z-index: 10;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .project-card .tech-stack {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .timeline-item:nth-child(even) .tech-stack {
+            justify-content: flex-start;
+        }
+
+        .tech-badge {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+        }
+
+        .code-preview {
+            background: #1e1e1e;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            border-left: 4px solid #ffd700;
+        }
+
+        .interactive-demo {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .demo-button {
+            background: #ffd700;
+            color: #333;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .demo-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .skills-section {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                text-align: left;
+                padding-left: 60px;
+                padding-right: 0;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .tech-stack {
+                justify-content: flex-start !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Jouw Naam</h1>
+        <p>Software Developer | Healthcare Tech | AI/ML Enthusiast</p>
+        <div class="scroll-indicator">↓ Scroll om mijn verhaal te ontdekken</div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="timeline-container">
+        <div class="timeline">
+            <!-- Project 1: HL7 Messaging Service -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="project-card">
+                    <h3>🏥 HL7 Orchestrator-Agent Service</h3>
+                    <p>Een schaalbare messaging service voor healthcare interoperabiliteit, gebouwd met moderne architectuurpatronen.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Kotlin</span>
+                        <span class="tech-badge">HL7 FHIR</span>
+                        <span class="tech-badge">Microservices</span>
+                    </div>
+                    <div class="code-preview">
+<span style="color: #569cd6;">class</span> <span style="color: #4ec9b0;">HL7MessageOrchestrator</span> {
+    <span style="color: #569cd6;">suspend fun</span> <span style="color: #dcdcaa;">processMessage</span>(msg: HL7Message) {
+        <span style="color: #6a9955;">// Route to appropriate agent</span>
+        agent.handle(msg)
+    }
+}
+                    </div>
+                    <div class="interactive-demo">
+                        <p>Verwerk meer dan 10,000 berichten per seconde</p>
+                        <button class="demo-button" onclick="alert('Live demo zou hier worden getoond!')">Bekijk Live Demo</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Sign Language Translation -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="project-card">
+                    <h3>🤟 AI Sign Language Translator</h3>
+                    <p>Real-time gebarentaal vertaling met computer vision en deep learning voor toegankelijke communicatie.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">TensorFlow</span>
+                        <span class="tech-badge">MediaPipe</span>
+                        <span class="tech-badge">Kotlin</span>
+                        <span class="tech-badge">Compose Multiplatform</span>
+                    </div>
+                    <div class="code-preview">
+<span style="color: #569cd6;">val</span> <span style="color: #9cdcfe;">handDetector</span> = HandDetector()
+handDetector.<span style="color: #dcdcaa;">detectGesture</span>(frame)
+    .<span style="color: #dcdcaa;">map</span> { gesture -> 
+        model.<span style="color: #dcdcaa;">translate</span>(gesture) 
+    }
+                    </div>
+                    <div class="interactive-demo">
+                        <p>95% accuracy op 1000+ gebaren</p>
+                        <button class="demo-button" onclick="alert('Probeer de demo in de browser!')">Test de AI</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Cross-platform Dashboard -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="project-card">
+                    <h3>📊 Medical Data Dashboard</h3>
+                    <p>Real-time monitoring dashboard voor healthcare data met Vue.js frontend en Kotlin backend.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Vue.js</span>
+                        <span class="tech-badge">Kotlin</span>
+                        <span class="tech-badge">WebSockets</span>
+                        <span class="tech-badge">D3.js</span>
+                    </div>
+                    <div class="code-preview">
+<span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">dashboard</span> = <span style="color: #dcdcaa;">createDashboard</span>({
+    <span style="color: #9cdcfe;">dataSource:</span> <span style="color: #ce9178;">'ws://api.health.io'</span>,
+    <span style="color: #9cdcfe;">updateInterval:</span> <span style="color: #b5cea8;">1000</span>,
+    <span style="color: #9cdcaa;">onUpdate</span>: <span style="color: #569cd6;">(data)</span> => render(data)
+})
+                    </div>
+                    <div class="interactive-demo">
+                        <p>Live data visualisatie</p>
+                        <button class="demo-button" onclick="alert('Dashboard zou hier laden!')">Open Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="skills-section">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Mijn Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon">🏥</div>
+                <h4>Healthcare Tech</h4>
+                <p>HL7, FHIR, HIPAA</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🤖</div>
+                <h4>AI/ML</h4>
+                <p>TensorFlow, MediaPipe</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📱</div>
+                <h4>Cross-Platform</h4>
+                <p>Compose, MAUI</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">⚡</div>
+                <h4>Backend</h4>
+                <p>Kotlin, C#, ASP.NET</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🎨</div>
+                <h4>Frontend</h4>
+                <p>Vue.js, Modern Web</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🔧</div>
+                <h4>Architecture</h4>
+                <p>Microservices, APIs</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Intersection Observer voor scroll animaties
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        // Observeer alle timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Smooth scroll
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.querySelector('.timeline-container').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
