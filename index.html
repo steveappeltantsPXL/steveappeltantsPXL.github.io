@@ -529,7 +529,7 @@
             <p style="font-size: 1.1rem; max-width: 800px; line-height: 1.6;">{{ config.bio }}</p>
             
             <div class="contact-buttons">
-                <a v-if="config.github" :href="`https://github.com/${config.github}`" target="_blank" class="contact-btn">
+                <a v-if="config.github" :href="`${config.github}`" target="_blank" class="contact-btn">
                     GitHub Profile
                 </a>
                 <a v-if="config.linkedin" :href="config.linkedin" target="_blank" class="contact-btn">
