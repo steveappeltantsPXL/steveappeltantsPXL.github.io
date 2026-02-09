@@ -3,7 +3,7 @@
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success)](https://steveappeltantspxl.github.io/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Professional portfolio and curriculum vitae for Steve Appeltants - Software Manager and Bachelor Applied Science student specializing in healthcare technology and enterprise solutions.
+Professional portfolio and curriculum vitae for Steve Appeltants – Software Manager and Bachelor Applied Science student specializing in healthcare technology and enterprise solutions.
 
 ## 🚀 Live Site
 
@@ -16,14 +16,14 @@ This portfolio showcases:
 - **Technical Skills** in Java, Kotlin, .NET, and modern web technologies
 - **Education** from University College PXL in Applied Informatics
 - **Featured Projects** including healthcare interoperability and enterprise solutions
-- **Dynamic GitHub Integration** for showcasing latest repositories
+- **Dynamic GitHub Integration** for showcasing the latest repositories
 
 ## 🛠 Tech Stack
 
 ### Frontend
-- **Vue.js 3** - Reactive JavaScript framework
-- **Vanilla CSS** - Custom styling with CSS variables
-- **HTML5** - Semantic markup
+- **Vue.js 3** – Reactive JavaScript framework
+- **Vanilla CSS** – Custom styling with CSS variables
+- **HTML5** – Semantic markup
 
 ### Features
 - 📱 Fully responsive design
@@ -38,9 +38,9 @@ This portfolio showcases:
 
 This portfolio dynamically fetches and displays your latest GitHub repositories using the GitHub API. To enable this feature with a higher rate limit, you need to configure a GitHub Personal Access Token:
 
-### Option 1: Secure Setup (Recommended) - Using GitHub Actions
+### Option 1: Secure Setup (Recommended) – Using GitHub Actions
 
-The project includes GitHub Actions workflow that securely injects your token at deploy time:
+The project includes a GitHub Actions workflow that securely injects a token at deployment time:
 
 1. **Create a Personal Access Token:**
    - Go to GitHub Settings → Developer settings → Personal access tokens (classic)

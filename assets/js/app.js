@@ -294,7 +294,7 @@ createApp({
             const scrollPercentage = windowHeight > 0 ? Math.round((scrolled / windowHeight) * 100) : 0;
             
             this.scrollPercentage = scrollPercentage;
-            this.showScrollNav = scrollPercentage > 10;
+            this.showScrollNav = scrollPercentage > 6;
         },
         
         scrollToTop() {
