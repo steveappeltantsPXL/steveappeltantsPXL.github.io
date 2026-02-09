@@ -3,261 +3,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Steve Appeltants - Software Manager specializing in healthcare technology, HL7/FHIR messaging, and AI/ML solutions for accessibility.">
-    <meta name="keywords" content="Software Manager, Healthcare Tech, HL7/FHIR, AI/ML, Kotlin, Vue.js, Accessibility Technology">
+    <meta name="description" content="Steve Appeltants - Software Manager and Bachelor Applied Science student specializing in healthcare technology, Java/Kotlin development, and enterprise architecture.">
+    <meta name="keywords" content="Software Manager, Java Developer, Kotlin, Healthcare Tech, HL7/FHIR, Enterprise Service Bus, .NET Developer, Bachelor Applied Science">
     <meta name="author" content="Steve Appeltants">
-
+    <meta name="robots" content="index, follow">
+    
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://steveappeltantspxl.github.io/">
-    <meta property="og:title" content="Steve Appeltants - Interactive Portfolio">
-    <meta property="og:description" content="Software Manager specializing in healthcare technology and AI/ML solutions.">
+    <meta property="og:title" content="Steve Appeltants - Software Manager Portfolio">
+    <meta property="og:description" content="Software Manager specializing in healthcare technology and enterprise solutions. Java, Kotlin, and .NET expertise.">
     <meta property="og:image" content="https://steveappeltantspxl.github.io/assets/images/og-image.png">
-
+    
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://steveappeltantspxl.github.io/">
-    <meta property="twitter:title" content="Steve Appeltants - Interactive Portfolio">
-    <meta property="twitter:description" content="Software Manager specializing in healthcare technology and AI/ML solutions.">
-
+    <meta property="twitter:title" content="Steve Appeltants - Software Manager Portfolio">
+    <meta property="twitter:description" content="Software Manager specializing in healthcare technology and enterprise solutions.">
+    <meta property="twitter:image" content="https://steveappeltantspxl.github.io/assets/images/og-image.png">
+    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://steveappeltantspxl.github.io/">
-
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-
+    
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://api.github.com">
-
-    <title>Steve Appeltants - Interactive Portfolio</title>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Steve Appeltants",
+            "jobTitle": "Software Manager",
+            "url": "https://steveappeltantspxl.github.io/",
+            "sameAs": [
+                "https://www.linkedin.com/in/steve-appeltants/",
+                "https://github.com/steveappeltantsPXL"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Sint-Truiden",
+                "addressCountry": "BE"
+            },
+            "email": "steve.appeltants@outlook.com",
+            "telephone": "+32-470-31-01-81",
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "University College PXL"
+            },
+            "knowsAbout": ["Software Management", "Java", "Kotlin", "Healthcare Technology", "HL7/FHIR", ".NET Development"]
+        }
+    </script>
+    
+    <title>Steve Appeltants - Software Manager Portfolio</title>
+    
+    <!-- External Stylesheets -->
     <link rel="stylesheet" href="/assets/css/styles.css">
+    
+    <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
 </head>
 <body>
-    <div id="app">
-        <!-- Hero Section -->
-        <div class="hero">
-            <h1>{{ config.name }}</h1>
-            <p>{{ config.title }}</p>
-            <p style="font-size: 1.1rem; max-width: 800px; line-height: 1.6;">{{ config.bio }}</p>
-
-            <div class="contact-buttons">
-                <a v-if="config.github" :href="`${config.github}`" target="_blank" class="contact-btn">
-                    GitHub Profile
-                </a>
-                <a v-if="config.linkedin" :href="config.linkedin" target="_blank" class="contact-btn">
-                    LinkedIn
-                </a>
-                <a v-if="config.email" :href="`mailto:${config.email}`" class="contact-btn">
-                    Contact Me
-                </a>
-            </div>
-
-            <div class="scroll-indicator" @click="scrollToSection('skills')">
-                ↓ Scroll to discover my story
+<div id="app">
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>{{ config.name }}</h1>
+        <p class="hero-title">{{ config.title }}</p>
+        <p class="hero-bio">{{ config.bio }}</p>
+        
+        <div class="contact-buttons">
+            <a v-if="config.github" :href="config.github" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                <span class="icon">💻</span> GitHub Profile
+            </a>
+            <a v-if="config.linkedin" :href="config.linkedin" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                <span class="icon">💼</span> LinkedIn
+            </a>
+            <a v-if="config.email" :href="`mailto:${config.email}`" class="contact-btn">
+                <span class="icon">✉️</span> Contact Me
+            </a>
+        </div>
+        
+        <div class="scroll-indicator" @click="scrollToSection('soft-skills')" aria-label="Scroll down">
+            ↓ Discover my journey
+        </div>
+    </header>
+    
+    <!-- Soft Skills Section -->
+    <section class="skills-overview soft-skills-section" id="soft-skills">
+        <div class="skills-container">
+            <h2>Soft Skills & Leadership</h2>
+            <div v-for="category in softSkills" :key="category.category" class="skill-category">
+                <h3>{{ category.category }}</h3>
+                <div class="skill-tags">
+                    <span v-for="skill in category.items" :key="skill"
+                          class="skill-tag"
+                          :class="getSkillClass(skill)">
+                        {{ skill }}
+                    </span>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Skills Section -->
-        <div class="skills-overview" id="skills">
-            <div class="skills-container">
-                <h2>Technical Skills</h2>
-                <div v-for="category in config.skills" :key="category.category" class="skill-category">
-                    <h3>{{ category.category }}</h3>
-                    <div class="skill-tags">
-                        <span v-for="skill in category.items" :key="skill" class="skill-tag">{{ skill }}</span>
+    <!-- Technical Skills Section -->
+    <section class="skills-overview technical-skills-section" id="technical-skills">
+        <div class="skills-container">
+            <h2>Technical Skills & Expertise</h2>
+            <div v-for="category in technicalSkills" :key="category.category" class="skill-category">
+                <h3>{{ category.category }}</h3>
+                <div class="skill-tags">
+                    <span v-for="skill in category.items" :key="skill"
+                          class="skill-tag"
+                          :class="getSkillClass(skill)">
+                        {{ skill }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section class="experience-section" id="experience">
+        <div class="experience-container">
+            <h2>Experience</h2>
+            <div v-for="exp in config.experience" :key="exp.title + exp.period" class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>{{ exp.title }}</h3>
+                        <p class="company">{{ exp.company }}</p>
+                    </div>
+                    <span class="experience-period">{{ exp.period }}</span>
+                </div>
+                <ul class="experience-highlights">
+                    <li v-for="item in exp.highlights" :key="item">{{ item }}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section class="education-section" id="education">
+        <div class="education-container">
+            <h2>Education</h2>
+            <div v-for="edu in config.education" :key="edu.degree" class="education-card">
+                <h3>{{ edu.degree }}</h3>
+                <p v-if="edu.specialization" class="specialization">{{ edu.specialization }}</p>
+                <p class="institution">{{ edu.institution }}</p>
+                <p class="experience-period">{{ edu.period }}</p>
+                <ul v-if="edu.achievements" class="achievements">
+                    <li v-for="achievement in edu.achievements" :key="achievement">{{ achievement }}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering & Community Section -->
+    <section class="volunteering-section" id="volunteering">
+        <div class="volunteering-container">
+            <h2>Volunteering & Community Engagement</h2>
+
+            <div v-for="vol in config.volunteering" :key="vol.title + vol.period" class="volunteer-card">
+                <div class="volunteer-header">
+                    <div>
+                        <h3>{{ vol.title }}</h3>
+                        <p class="organization">{{ vol.organization }}</p>
+                        <p v-if="vol.website" class="volunteer-website">
+                            <a :href="vol.website" target="_blank" rel="noopener noreferrer">
+                                {{ vol.website }}
+                            </a>
+                        </p>
+                    </div>
+                    <span class="volunteer-period">{{ vol.period }}</span>
+                </div>
+
+                <p v-if="vol.description" class="volunteer-description">{{ vol.description }}</p>
+
+                <ul class="volunteer-highlights">
+                    <li v-for="item in vol.highlights" :key="item">{{ item }}</li>
+                </ul>
+
+                <!-- Projects subsection (for Code for Belgium) -->
+                <div v-if="vol.projects && vol.projects.length > 0" class="volunteer-projects">
+                    <h4>Projects</h4>
+                    <div v-for="project in vol.projects" :key="project.name" class="project-item">
+                        <strong>{{ project.name }}:</strong> {{ project.description }}
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Experience Section -->
-        <div class="experience-section" id="experience">
-            <div class="experience-container">
-                <h2>Experience</h2>
-                <div v-for="exp in config.experience" :key="exp.title" class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>{{ exp.title }}</h3>
-                            <p>{{ exp.company }}</p>
-                        </div>
-                        <span class="experience-period">{{ exp.period }}</span>
+    <!-- Featured Projects Timeline -->
+    <section class="timeline-container" id="projects">
+        <div class="timeline">
+            <h2>Featured Projects</h2>
+            
+            <!-- Project 1: Octogrid ESB -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="project-card">
+                    <h3>🏥 Octogrid - Enterprise Service Bus</h3>
+                    <p>Leading healthcare interoperability project at Jessa Ziekenhuis. Implementing HL7/FHIR messaging for seamless medical data exchange.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge java">Java</span>
+                        <span class="tech-badge vue">Vue.js</span>
+                        <span class="tech-badge">HL7/FHIR</span>
+                        <span class="tech-badge">ESB</span>
                     </div>
-                    <ul class="experience-highlights">
-                        <li v-for="item in exp.highlights" :key="item">{{ item }}</li>
-                    </ul>
+                    <div class="project-meta">
+                        <span>📅 2025-2026</span>
+                        <span>🏢 Jessa Ziekenhuis</span>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Education Section -->
-        <div class="education-section" id="education">
-            <div class="education-container">
-                <h2>Education</h2>
-                <div v-for="edu in config.education" :key="edu.degree" class="education-card">
-                    <h3>{{ edu.degree }}</h3>
-                    <p>{{ edu.institution }}</p>
-                    <p class="experience-period">{{ edu.period }}</p>
+            
+            <!-- Project 2: Supermarket Automation Research -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="project-card">
+                    <h3>🛒 Supermarket Automation Feasibility Study</h3>
+                    <p>Comprehensive research project analyzing technical feasibility and market viability of automated supermarket systems.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Research</span>
+                        <span class="tech-badge">Analysis</span>
+                        <span class="tech-badge">IoT</span>
+                    </div>
+                    <div class="project-meta">
+                        <span>📅 2022-2023</span>
+                        <span>🏢 University College PXL</span>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Timeline Projects Section -->
-        <div class="timeline-container" id="projects">
-            <div class="timeline">
-                <h2>Featured Projects</h2>
-
-                <!-- Project 1: HL7 Messaging Service -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="project-card">
-                        <h3>🏥 HL7 Orchestrator-Agent Service</h3>
-                        <p>A scalable messaging service for healthcare interoperability, built with modern architecture patterns.</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Kotlin</span>
-                            <span class="tech-badge">HL7 FHIR</span>
-                            <span class="tech-badge">Microservices</span>
-                        </div>
-                        <div class="code-preview">
-<span style="color: #569cd6;">class</span> <span style="color: #4ec9b0;">HL7MessageOrchestrator</span> {
-    <span style="color: #569cd6;">suspend fun</span> <span style="color: #dcdcaa;">processMessage</span>(msg: HL7Message) {
-        <span style="color: #6a9955;">// Route to appropriate agent</span>
-        agent.handle(msg)
-    }
-}
-                        </div>
-                        <div class="interactive-demo">
-                            <p>Process over 10,000 messages per second</p>
-                            <button class="demo-button" @click="showDemo('HL7')">Watch Live Demo</button>
-                        </div>
+            
+            <!-- Project 3: Project Lingo -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="project-card">
+                    <h3>💬 Project Lingo - Full-Stack Application</h3>
+                    <p>Complete backend and frontend development using modern .NET technologies and web standards.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge dotnet">.NET</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">HTML/CSS</span>
                     </div>
-                </div>
-
-                <!-- Project 2: Sign Language Translation -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="project-card">
-                        <h3>🤟 AI Sign Language Translator</h3>
-                        <p>Real-time sign language translation using computer vision and deep learning for accessible communication.</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">TensorFlow</span>
-                            <span class="tech-badge">MediaPipe</span>
-                            <span class="tech-badge">Kotlin</span>
-                            <span class="tech-badge">Compose Multiplatform</span>
-                        </div>
-                        <div class="code-preview">
-<span style="color: #569cd6;">val</span> <span style="color: #9cdcfe;">handDetector</span> = HandDetector()
-handDetector.<span style="color: #dcdcaa;">detectGesture</span>(frame)
-    .<span style="color: #dcdcaa;">map</span> { gesture ->
-        model.<span style="color: #dcdcaa;">translate</span>(gesture)
-    }
-                        </div>
-                        <div class="interactive-demo">
-                            <p>98% accuracy on 20,000+ gestures</p>
-                            <button class="demo-button" @click="showDemo('ASL')">Test the AI</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Cross-platform Dashboard -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="project-card">
-                        <h3>📊 Medical Data Dashboard</h3>
-                        <p>Real-time monitoring dashboard for healthcare data with Vue.js frontend and Kotlin backend.</p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Vue.js</span>
-                            <span class="tech-badge">Kotlin</span>
-                            <span class="tech-badge">WebSockets</span>
-                            <span class="tech-badge">D3.js</span>
-                        </div>
-                        <div class="code-preview">
-<span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">dashboard</span> = <span style="color: #dcdcaa;">createDashboard</span>({
-    <span style="color: #9cdcfe;">dataSource:</span> <span style="color: #ce9178;">'ws://api.health.io'</span>,
-    <span style="color: #9cdcfe;">updateInterval:</span> <span style="color: #b5cea8;">1000</span>,
-    <span style="color: #9cdcaa;">onUpdate</span>: <span style="color: #569cd6;">(data)</span> => render(data)
-})
-                        </div>
-                        <div class="interactive-demo">
-                            <p>Live data visualization</p>
-                            <button class="demo-button" @click="showDemo('Dashboard')">Open Dashboard</button>
-                        </div>
+                    <div class="project-meta">
+                        <span>📅 2021-2022</span>
+                        <span>🏢 University College PXL</span>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- GitHub Projects Section -->
-        <div class="github-section" id="github" v-if="config.github && config.featuredRepos.length > 0">
-            <div class="github-container">
+    </section>
+    
+    <!-- GitHub Projects Section -->
+    <section class="github-section" id="github">
+        <div class="github-container">
+            <div class="section-header">
                 <h2>GitHub Projects</h2>
-
-                <div v-if="loading" style="text-align: center; padding: 2rem;">
-                    <p>Loading projects...</p>
-                </div>
-
-                <div v-else-if="error" style="text-align: center; padding: 2rem; background: rgba(255, 0, 0, 0.2); border-radius: 10px;">
-                    <p>{{ error }}</p>
-                </div>
-
-                <div v-else class="github-grid">
-                    <div v-for="repo in repositories" :key="repo.name" class="github-card">
-                        <h3>{{ repo.name }}</h3>
-                        <p style="opacity: 0.9; margin-bottom: 1rem;">{{ repo.description || 'No description available' }}</p>
-
-                        <div class="github-stats">
-                            <span v-if="repo.language">
-                                <span class="tech-badge">{{ repo.language }}</span>
-                            </span>
-                            <span v-if="repo.stargazers_count">⭐ {{ repo.stargazers_count }}</span>
-                            <span v-if="repo.forks_count">🔀 {{ repo.forks_count }}</span>
+                <button @click="toggleRepoManager" class="manage-repos-btn">
+                    {{ showRepoManager ? '✕ Close' : '⚙️ Manage Repositories' }}
+                </button>
+            </div>
+            
+            <!-- Repository Manager -->
+            <div v-if="showRepoManager" class="repo-manager">
+                <h3>Manage Featured Repositories</h3>
+                <div class="repo-manager-content">
+                    <div class="current-repos">
+                        <h4>Current Featured Repos:</h4>
+                        <div v-for="(repo, index) in tempRepos" :key="index" class="repo-item">
+                            <span>{{ repo }}</span>
+                            <button @click="removeRepository(index)" class="remove-btn">Remove</button>
                         </div>
-
-                        <a :href="repo.html_url" target="_blank" class="github-link">
-                            View on GitHub →
-                        </a>
+                    </div>
+                    <div class="add-repo">
+                        <input
+                                v-model="newRepoName"
+                                @keyup.enter="addRepository"
+                                placeholder="Enter repository name"
+                                class="repo-input"
+                        >
+                        <button @click="addRepository" class="add-btn">Add Repository</button>
+                    </div>
+                    <div class="manager-actions">
+                        <button @click="saveRepositories" class="save-btn">💾 Save Changes</button>
+                        <button @click="cancelRepoChanges" class="cancel-btn">Cancel</button>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; {{ new Date().getFullYear() }} {{ config.name }}. All rights reserved.</p>
-        </footer>
-
-        <!-- Scroll Navigation -->
-        <div class="scroll-nav" :class="{ visible: showScrollNav }">
-            <div class="scroll-nav-menu">
-                <div class="scroll-nav-title">
-                    Jump to Section
-                    <span class="scroll-percentage-inline">{{ scrollPercentage }}</span>
-                </div>
-                <button class="scroll-nav-btn" @click="scrollToSection('skills')" title="Go to Skills">
-                    Technical Skills
-                </button>
-                <button class="scroll-nav-btn" @click="scrollToSection('experience')" title="Go to Experience">
-                    Experience
-                </button>
-                <button class="scroll-nav-btn" @click="scrollToSection('education')" title="Go to Education">
-                    Education
-                </button>
-                <button class="scroll-nav-btn" @click="scrollToSection('projects')" title="Go to Projects">
-                    Featured Projects
-                </button>
-                <button class="scroll-nav-btn" @click="scrollToSection('github')" title="Go to GitHub">
-                    GitHub Projects
-                </button>
-                <button class="scroll-nav-btn scroll-top-btn" @click="scrollToTop" title="Back to top">
-                    ↑ Back to Top
-                </button>
+            
+            <!-- Loading State -->
+            <div v-if="loading" class="loading-state">
+                <p>🔄 Loading projects from GitHub...</p>
+            </div>
+            
+            <!-- Error State -->
+            <div v-else-if="error" class="error-state">
+                <p>{{ error }}</p>
+                <button @click="fetchRepositories" class="retry-btn">🔄 Retry</button>
+            </div>
+            
+            <!-- GitHub Projects Grid -->
+            <div v-else-if="repositories.length > 0" class="github-grid">
+                <article v-for="repo in repositories" :key="repo.name" class="github-card">
+                    <h3>{{ repo.name }}</h3>
+                    <p class="repo-description">{{ repo.description || 'No description available' }}</p>
+                    
+                    <div class="github-stats">
+                            <span v-if="repo.language" class="tech-badge" :class="getLanguageClass(repo.language)">
+                                {{ repo.language }}
+                            </span>
+                        <span v-if="repo.stargazers_count">⭐ {{ repo.stargazers_count }}</span>
+                        <span v-if="repo.forks_count">🔀 {{ repo.forks_count }}</span>
+                        <span v-if="repo.updated_at">📅 {{ formatDate(repo.updated_at) }}</span>
+                    </div>
+                    
+                    <a :href="repo.html_url" target="_blank" rel="noopener noreferrer" class="github-link">
+                        View on GitHub →
+                    </a>
+                </article>
+            </div>
+            
+            <!-- Empty State -->
+            <div v-else class="empty-state">
+                <p>No repositories configured. Click "Manage Repositories" to add some!</p>
             </div>
         </div>
-    </div>
+    </section>
+    
+    <!-- Languages Section -->
+    <section class="languages-section">
+        <div class="languages-container">
+            <h2>Languages</h2>
+            <div class="languages-grid">
+                <div v-for="lang in config.languages" :key="lang.language" class="language-item">
+                    <span class="language-name">{{ lang.language }}</span>
+                    <span class="language-level">{{ lang.level }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; {{ new Date().getFullYear() }} {{ config.name }}. All rights reserved.</p>
+            <p class="footer-meta">
+                Built with Vue.js | Hosted on GitHub Pages |
+                <a href="mailto:{{ config.email }}">{{ config.email }}</a>
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Scroll Navigation -->
+    <nav class="scroll-nav" :class="{ visible: showScrollNav }" aria-label="Quick navigation">
+        <div class="scroll-nav-menu">
+            <div class="scroll-nav-title">
+                Jump to Section
+                <span class="scroll-percentage-inline">{{ scrollPercentage }}</span>
+            </div>
+            <button class="scroll-nav-btn" @click="scrollToSection('soft-skills')">Soft Skills</button>
+            <button class="scroll-nav-btn" @click="scrollToSection('technical-skills')">Technical Skills</button>
+            <button class="scroll-nav-btn" @click="scrollToSection('experience')">Experience</button>
+            <button class="scroll-nav-btn" @click="scrollToSection('education')">Education</button>
+            <button class="scroll-nav-btn" @click="scrollToSection('volunteering')">Volunteering</button>
+            <button class="scroll-nav-btn" @click="scrollToSection('projects')">Featured Projects</button>
+            <button class="scroll-nav-btn" @click="scrollToSection('github')">GitHub Projects</button>
+        </div>
+        <button class="scroll-top-btn" @click="scrollToTop" title="Back to top" aria-label="Scroll to top">
+            ↑
+        </button>
+    </nav>
+</div>
 
-    <script src="/assets/js/app.js"></script>
+<!-- External JavaScript -->
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
