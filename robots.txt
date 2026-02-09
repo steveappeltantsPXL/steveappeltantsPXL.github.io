@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /.github/
+Disallow: /.git/
+Disallow: /.idea/
+
+Sitemap: https://steveappeltantspxl.github.io/sitemap.xml

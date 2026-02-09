@@ -1,5 +1,28 @@
 # JetBrains IDE
 .idea/
+*.iml
+*.iws
+*.ipr
 
-# Documentation
+# Documentation & Assets
 docs/
+*.pdf
+
+# OS Files
+.DS_Store
+Thumbs.db
+.env
+.env.local
+
+# Node/Build
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+.vscode/
