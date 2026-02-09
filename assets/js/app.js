@@ -63,8 +63,7 @@ createApp({
             loading: false,
             error: null,
             showScrollNav: false,
-            scrollPercentage: 0,
-            scrollProgress: 175.93
+            scrollPercentage: 0
         };
     },
 
@@ -85,8 +84,6 @@ createApp({
             const scrollPercentage = windowHeight > 0 ? Math.round((scrolled / windowHeight) * 100) : 0;
 
             this.scrollPercentage = scrollPercentage;
-            // SVG circle circumference is 175.93 (2 * π * 28)
-            this.scrollProgress = 175.93 - (scrollPercentage / 100) * 175.93;
 
             // Show scroll nav after scrolling 10% down
             this.showScrollNav = scrollPercentage > 10;
