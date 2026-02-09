@@ -24,8 +24,7 @@ createApp({
                 featuredRepos: [
                     'WebSLT',
                     'WebSLT-Frontend',
-                    'steveappeltantsPXL.github.io',
-                    'chapter_multithreading'
+                    'steveappeltantsPXL.github.io'
                 ],
                 
                 skills: [
