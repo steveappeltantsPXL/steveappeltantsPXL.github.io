@@ -1,0 +1,31 @@
+name: Security Check - Prevent Token Leaks
+
+on:
+  pull_request:
+    paths:
+      - 'assets/js/app.js'
+      - '.env'
+      - '.env.local'
+
+jobs:
+  check-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for hardcoded tokens
+        run: |
+          if grep -q "ghp_" assets/js/app.js; then
+            echo "❌ ERROR: Found hardcoded GitHub token in app.js"
+            echo "Make sure to use __GITHUB_TOKEN_PLACEHOLDER__ instead"
+            exit 1
+          fi
+
+          if grep -q "GITHUB_TOKEN" .env 2>/dev/null; then
+            echo "❌ ERROR: Found GitHub token in .env file"
+            echo ".env files should never be committed"
+            exit 1
+          fi
+
+          echo "✅ No hardcoded tokens detected"

@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Inject GitHub Token
+        run: |
+          if [ -z "${{ secrets.GITHUB_PAT }}" ]; then
+            echo "Warning: GITHUB_PAT secret not configured. Using placeholder token."
+            echo "GitHub projects will have rate limiting. See README.md for setup instructions."
+          else
+            sed -i "s/__GITHUB_TOKEN_PLACEHOLDER__/${{ secrets.GITHUB_PAT }}/g" assets/js/app.js
+            echo "GitHub token injected successfully"
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
