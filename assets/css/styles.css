@@ -858,7 +858,7 @@ h2 {
    Volunteering Section
    ============================================ */
 .volunteering-section {
-    background: rgba(16, 185, 129, 0.1);
+    background: rgba(248, 152, 32, 0.1);
     backdrop-filter: blur(10px);
     padding: 4rem 2rem;
 }
@@ -903,20 +903,27 @@ h2 {
 }
 
 .volunteer-website {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-top: 0.25rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
 }
 
 .volunteer-website a {
-    color: var(--vue-green);
+    display: inline-block;
+    color: var(--java-orange);
+    background: rgba(248, 152, 32, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(248, 152, 32, 0.3);
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 .volunteer-website a:hover {
-    opacity: 0.7;
-    text-decoration: underline;
+    background: rgba(248, 152, 32, 0.25);
+    border-color: var(--java-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(248, 152, 32, 0.2);
 }
 
 .volunteer-period {
@@ -932,8 +939,8 @@ h2 {
     opacity: 0.9;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: rgba(16, 185, 129, 0.1);
-    border-left: 3px solid var(--success);
+    background: rgba(248, 152, 32, 0.1);
+    border-left: 3px solid var(--java-orange);
     border-radius: 5px;
 }
 
@@ -953,7 +960,7 @@ h2 {
     content: '♦';
     position: absolute;
     left: 0;
-    color: var(--success);
+    color: var(--java-orange);
     font-weight: bold;
     font-size: 1.1rem;
 }
@@ -967,21 +974,21 @@ h2 {
 
 .volunteer-projects h4 {
     font-size: 1.2rem;
-    color: var(--vue-green);
+    color: var(--java-orange);
     margin-bottom: 1rem;
 }
 
 .project-item {
-    background: rgba(66, 184, 131, 0.1);
+    background: rgba(248, 152, 32, 0.1);
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 8px;
-    border-left: 3px solid var(--vue-green);
+    border-left: 3px solid var(--java-orange);
     line-height: 1.6;
 }
 
 .project-item strong {
-    color: var(--vue-green);
+    color: var(--java-orange);
 }
 
 /* ============================================

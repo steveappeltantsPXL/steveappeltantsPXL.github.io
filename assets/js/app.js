@@ -8,11 +8,11 @@ createApp({
             // ============================================
             config: {
                 name: 'Steve Appeltants',
-                title: 'Software Manager | Prof. Bachelor Applied Science',
+                title: 'Software Manager | Prof. Bachelor of Applied Science',
                 bio: 'Final year student combining 15+ years of business leadership with modern software management' +
                     ' expertise. With deep empassie for healthcare technology, architecture of enterprise solutions and lead' +
                     ' multidisciplinary teams to transform research into real-world impact. Always with' +
-                    ' sustainability and innovation at the core.',
+                    ' sustainability and innovation are at the core.',
                 email: 'steve.appeltants@outlook.com',
                 github: 'https://github.com/steveappeltantsPXL',
                 linkedin: 'https://www.linkedin.com/in/steve-appeltants/',
@@ -22,10 +22,9 @@ createApp({
 
                 // Featured GitHub repositories (add your repo names here)
                 featuredRepos: [
+                    'steveappeltantsPXL.github.io',
                     'WebSLT',
-                    'WebSLT-Frontend',
-                    'steveappeltantsPXL.github.io'
-                ],
+                    'WebSLT-Frontend',                ],
                 
                 skills: [
                     // ========================================
@@ -40,12 +39,12 @@ createApp({
                         category: 'Communication & Networking',
                         items: ['Stakeholder Engagement', 'Cross-Functional Collaboration',
                                 'Technical Communication', 'Persuasion & Influence',
-                                'Presentation Skills', 'Active Listening']
+                                'Active Listening']
                     },
                     {
                         category: 'Organizational & Administrative',
                         items: ['Project Management', 'Budget Management', 'Resource Allocation',
-                                'Planning & Coordination', 'Time Management', 'Process Optimization']
+                                'Planning & Coordination', 'Process Optimization']
                     },
                     {
                         category: 'Entrepreneurial & Innovation',
@@ -99,7 +98,7 @@ createApp({
                 
                 experience: [
                     {
-                        title: 'Internship - Blueprint & Operations Manager Pilot Cases',
+                        title: 'Blueprint & Operations Manager Pilot Cases (Internship)',
                         company: 'PXL Research - Smart ICT Department',
                         period: '2025 - 2026',
                         highlights: [
@@ -112,18 +111,18 @@ createApp({
                         ]
                     },
                     {
-                        title: 'IT Project - Enterprise Service Bus (ESB)',
+                        title: 'Enterprise Service Bus (IT Project)',
                         company: 'Jessa Hospital - ICT Department',
                         period: '2025 - 2026',
                         highlights: [
-                            'Leading Octogrid Enterprise Service Bus project - Agent/Orchestrator development',
+                            'Leading Octogrid Enterprise Service Bus (ESB) project - Agent/Orchestrator development',
                             'Implementing HL7/FHIR healthcare interoperability solutions',
                             'Full-stack development with Kotlin and Vue.js',
                             'Managing stakeholder requirements and project delivery'
                         ]
                     },
                     {
-                        title: 'Research Project - Software Management',
+                        title: 'Research Project (Software Management)',
                         company: 'University College PXL',
                         period: '2022 - 2023',
                         highlights: [
@@ -133,7 +132,7 @@ createApp({
                         ]
                     },
                     {
-                        title: 'Research Project - Application Development',
+                        title: 'Research Project (Application Development)',
                         company: 'University College PXL',
                         period: '2021 - 2022',
                         highlights: [
@@ -147,7 +146,7 @@ createApp({
                         company: 'Algemene Aannemingen Janssen NV',
                         period: '2018 - 2020',
                         highlights: [
-                            'Led Waterkant Mechelen construction project',
+                            'Led the Waterkant Mechelen construction project',
                             'Managed cross-functional teams and budgets',
                             'Coordinated stakeholder communications'
                         ]
@@ -176,7 +175,7 @@ createApp({
                 
                 education: [
                     {
-                        degree: 'Professional Bachelor Applied Informatics',
+                        degree: 'Professional Bachelor of Applied Informatics',
                         specialization: 'Software Management, Application Development',
                         institution: 'University College PXL - Hasselt',
                         period: '2021 - 2026',
@@ -188,7 +187,7 @@ createApp({
                         ]
                     },
                     {
-                        degree: 'Electronics & Measurement and Control Technology',
+                        degree: 'Electronics & Measurement/Control Technology',
                         institution: 'Technicum (Hasp-O-Centrum) - Sint-Truiden',
                         period: '1987 - 1993 & 1994',
                         achievements: ['Graduated with distinction (75%)']
@@ -207,11 +206,11 @@ createApp({
                         period: '2021 - Present',
                         description: 'The Student Commission is a formal body established at the program level, giving students a voice within their own education. Members advise on all student and education-related topics including curriculum, schedules, student guidance, and communication.',
                         highlights: [
-                            'Represented student interests in program-level decision making',
+                            'Represented student interests in program-level decision-making',
                             'Provided feedback on educational profile, curriculum, and exam schedules',
                             'Participated in improving student support services and communication',
                             'Collaborated with program leadership on student-related initiatives',
-                            'Served as bridge between students and faculty administration'
+                            'Served as a bridge between students and faculty administration'
                         ]
                     },
                     {
@@ -221,15 +220,41 @@ createApp({
                         website: 'https://codeforbelgium.org/projects/',
                         description: 'Contributing to civic technology projects that improve government services and citizen engagement through open-source development.',
                         highlights: [
-                            'Participated in civic tech hackathons and collaborative projects',
+                            'Participate in civic tech hackathons and collaborative projects',
                             'Developed open-source solutions for public sector challenges',
                             'Collaborated with government agencies and civic organizations',
                             'Contributed to projects improving transparency and accessibility'
                         ],
                         projects: [
                             {
-                                name: 'Civic Tech Project Template',
-                                description: 'Replace this with your actual Code for Belgium project name and description. Describe the problem solved, technologies used, and your contribution to the open-source initiative.'
+                                name: 'Naar school in Vlaanderen',
+                                description: 'A project focused on providing accessible information about school ' +
+                                    'transportation options in Flanders, helping parents and students make informed ' +
+                                    'decisions about their commute to school.',
+                                link: 'https://naarschoolinvlaanderen.be/'
+                            },
+                            {
+                                name: 'Sint-Vincentius Kuringen',
+                                description: 'A project aimed at supporting the operations of the Sint-Vincentius Kuringen, ' +
+                                    'enhancing their digital infrastructure and improving patient care through ' +
+                                    'technology solutions.',
+                                link: 'https://vincentiuskuringen.be/'
+                            },
+                            {
+                                name: 'Help+',
+                                description: 'A project designed to help individuals in need by connecting them with ' +
+                                    'resources and support services, leveraging technology to facilitate access to help ' +
+                                    'and improve community welfare.',
+                                link: 'https://www.helpplus.be/'
+                            },
+                            {
+                                name: 'Zorghuis Limburg en Zorghuis Oostende',
+                                description: 'A project focused on supporting the booking operations of Zorghuis' +
+                                    ' Limburg and Zorghuis Oostende, two organizations providing care and support for' +
+                                    ' individuals with chronic illnesses, enhancing their digital infrastructure and' +
+                                    ' improving patient care through technology solutions.',
+                                link: 'https://www.zorghuislimburg.be/',
+                                link2: 'https://www.zorghuisoostende.be/'
                             }
                         ]
                     }
@@ -252,7 +277,7 @@ createApp({
             tempRepos: [],
 
             // Skills separation
-            softSkillsCount: 5  // First 5 categories are soft skills
+            softSkillsCount: 5  // The first 5 categories are soft skills
         };
     },
 
