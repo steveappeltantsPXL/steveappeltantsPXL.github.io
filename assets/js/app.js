@@ -203,7 +203,7 @@ createApp({
                     {
                         title: 'Student Commission Member',
                         organization: 'Hogeschool PXL - Applied Informatics',
-                        period: '2021 - Present',
+                        period: '2021 - 2024',
                         description: 'The Student Commission is a formal body established at the program level, giving students a voice within their own education. Members advise on all student and education-related topics including curriculum, schedules, student guidance, and communication.',
                         highlights: [
                             'Represented student interests in program-level decision-making',
