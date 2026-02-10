@@ -231,21 +231,21 @@ createApp({
                                 description: 'A project focused on providing accessible information about school ' +
                                     'transportation options in Flanders, helping parents and students make informed ' +
                                     'decisions about their commute to school.',
-                                link: 'https://naarschoolinvlaanderen.be/'
+                                website: 'https://naarschoolinvlaanderen.be/'
                             },
                             {
                                 name: 'Sint-Vincentius Kuringen',
                                 description: 'A project aimed at supporting the operations of the Sint-Vincentius Kuringen, ' +
                                     'enhancing their digital infrastructure and improving patient care through ' +
                                     'technology solutions.',
-                                link: 'https://vincentiuskuringen.be/'
+                                website: 'https://vincentiuskuringen.be/'
                             },
                             {
                                 name: 'Help+',
                                 description: 'A project designed to help individuals in need by connecting them with ' +
                                     'resources and support services, leveraging technology to facilitate access to help ' +
                                     'and improve community welfare.',
-                                link: 'https://www.helpplus.be/'
+                                website: 'https://www.helpplus.be/'
                             },
                             {
                                 name: 'Zorghuis Limburg en Zorghuis Oostende',
@@ -253,8 +253,7 @@ createApp({
                                     ' Limburg and Zorghuis Oostende, two organizations providing care and support for' +
                                     ' individuals with chronic illnesses, enhancing their digital infrastructure and' +
                                     ' improving patient care through technology solutions.',
-                                link: 'https://www.zorghuislimburg.be/',
-                                link2: 'https://www.zorghuisoostende.be/'
+                                website: 'https://www.zorghuislimburg.be/'
                             }
                         ]
                     }
@@ -429,10 +428,6 @@ createApp({
             try {
                 // Extract username from GitHub URL
                 const githubUsername = this.extractGitHubUsername(this.config.github);
-                
-                if (!githubUsername) {
-                    throw new Error('Invalid GitHub URL format');
-                }
                 
                 const repos = [];
                 const failedRepos = [];

@@ -858,7 +858,7 @@ h2 {
    Volunteering Section
    ============================================ */
 .volunteering-section {
-    background: rgba(248, 152, 32, 0.1);
+    background: rgba(0, 120, 212, 0.1);
     backdrop-filter: blur(10px);
     padding: 4rem 2rem;
 }
@@ -909,21 +909,21 @@ h2 {
 
 .volunteer-website a {
     display: inline-block;
-    color: var(--java-orange);
-    background: rgba(248, 152, 32, 0.15);
-    padding: 0.5rem 1rem;
+    color: #ffffff;
+    background: #0078D4;
+    padding: 0.6rem 1.2rem;
     border-radius: 6px;
-    border: 1px solid rgba(248, 152, 32, 0.3);
+    border: none;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 120, 212, 0.3);
 }
 
 .volunteer-website a:hover {
-    background: rgba(248, 152, 32, 0.25);
-    border-color: var(--java-orange);
+    background: #005a9e;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(248, 152, 32, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 120, 212, 0.4);
 }
 
 .volunteer-period {
@@ -939,8 +939,8 @@ h2 {
     opacity: 0.9;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: rgba(248, 152, 32, 0.1);
-    border-left: 3px solid var(--java-orange);
+    background: rgba(0, 120, 212, 0.1);
+    border-left: 3px solid #0078D4;
     border-radius: 5px;
 }
 
@@ -960,7 +960,7 @@ h2 {
     content: '♦';
     position: absolute;
     left: 0;
-    color: var(--java-orange);
+    color: #0078D4;
     font-weight: bold;
     font-size: 1.1rem;
 }
@@ -974,21 +974,44 @@ h2 {
 
 .volunteer-projects h4 {
     font-size: 1.2rem;
-    color: var(--java-orange);
+    color: #0078D4;
     margin-bottom: 1rem;
 }
 
 .project-item {
-    background: rgba(248, 152, 32, 0.1);
+    background: rgba(0, 120, 212, 0.1);
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 8px;
-    border-left: 3px solid var(--java-orange);
+    border-left: 3px solid #0078D4;
     line-height: 1.6;
 }
 
 .project-item strong {
-    color: var(--java-orange);
+    color: #0078D4;
+}
+
+.project-website {
+    margin-top: 0.75rem;
+}
+
+.project-website a {
+    display: inline-block;
+    color: #ffffff;
+    background: #0078D4;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 120, 212, 0.3);
+}
+
+.project-website a:hover {
+    background: #005a9e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 120, 212, 0.4);
 }
 
 /* ============================================

@@ -193,6 +193,11 @@
                     <h4>Projects</h4>
                     <div v-for="project in vol.projects" :key="project.name" class="project-item">
                         <strong>{{ project.name }}:</strong> {{ project.description }}
+                        <p v-if="project.website" class="project-website">
+                            <a :href="project.website" target="_blank" rel="noopener noreferrer">
+                                🔗 View Project →
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
