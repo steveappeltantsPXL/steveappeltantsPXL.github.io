@@ -295,7 +295,7 @@ createApp({
             
             // UI state
             mobileMenuOpen: false,
-            darkMode: true,
+            darkMode: false,
             
             // Skills separation
             softSkillsCount: 5
@@ -335,7 +335,7 @@ createApp({
         // Theme Management
         // ============================================
         initTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const savedTheme = localStorage.getItem('theme') || 'light';
             this.darkMode = savedTheme === 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
         },
