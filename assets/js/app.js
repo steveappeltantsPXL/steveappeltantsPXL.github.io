@@ -99,7 +99,6 @@ createApp({
                 
                 // Featured GitHub repositories
                 featuredRepos: [
-                    'steveappeltantsPXL.github.io',
                     'WebSLT',
                     'WebSLT-Frontend',
                 ],
@@ -202,7 +201,8 @@ createApp({
                         highlights: [
                             `Founded Visear startup concept for real-time sign language translation using AI/ML technology`,
                             'Developed business model with €2.3M projected revenue targeting 70,000+ deaf individuals in Belgium/Netherlands',
-                            'Designed cross-platform architecture with AI-powered bidirectional translation (speech-to-sign & sign-to-speech)',
+                            'Designed cross-platform architecture with AI-powered bidirectional translation' +
+                            ' (speech-to-sign and sign-to-speech)',
                             'Created financial projections with €636K development costs and break-even analysis for investor presentations',
                             'Established strategic partnerships with PXL-Research, Cegeka and cloud service providers',
                             'Pitched subscription-based SaaS model (€2.40/month) with 45% adoption rate targeting European market expansion'
@@ -233,13 +233,13 @@ createApp({
                 education: [
                     {
                         degree: 'Prof. Bachelor of Applied Computer Science',
-                        specialization: 'Software Management, Application Development',
+                        specialization: 'Software Management and (partial) Application Development',
                         institution: 'University College PXL - Hasselt',
                         period: '2021 - 2026',
                         achievements: [
-                            'Software Analysis & Quality Engineering',
-                            'UX Design & Automated Testing',
-                            'Java Expert & .NET Developer tracks',
+                            'Software Architecture & Enterprise Solutions',
+                            'Software Analysis & Design',
+                            'Java & .NET Expert Developer tracks',
                             'ITIL Service Management & DevOps'
                         ]
                     },
@@ -307,7 +307,7 @@ createApp({
                                     ' Limburg and Zorghuis Oostende, two organizations providing care and support for' +
                                     ' individuals with chronic illnesses, enhancing their digital infrastructure and' +
                                     ' improving patient care through technology solutions.',
-                                website: 'https://www.zorghuislimburg.be/'
+                                website: './under-construction.html'
                             }
                         ]
                     }
