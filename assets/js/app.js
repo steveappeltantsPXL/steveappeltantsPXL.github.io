@@ -1,3 +1,80 @@
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+// Debounce helper for performance optimization
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func.apply(this, args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// GitHub API Service with caching
+const githubService = {
+    cache: new Map(),
+    cacheTimeout: 5 * 60 * 1000, // 5 minutes
+    
+    async fetchWithCache(url, options = {}) {
+        const cacheKey = url;
+        const cached = this.cache.get(cacheKey);
+        
+        // Return cached data if valid
+        if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
+            console.log('Using cached data for:', url);
+            return { data: cached.data, fromCache: true };
+        }
+        
+        try {
+            const response = await fetch(url, options);
+            
+            // Check rate limits
+            const remaining = response.headers.get('X-RateLimit-Remaining');
+            const resetTime = response.headers.get('X-RateLimit-Reset');
+            
+            if (remaining === '0') {
+                const resetDate = new Date(resetTime * 1000);
+                throw new Error(`GitHub API rate limit exceeded. Resets at ${resetDate.toLocaleTimeString()}`);
+            }
+            
+            // Log rate limit info
+            console.log(`GitHub API rate limit: ${remaining} remaining`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            
+            // Cache the successful response
+            this.cache.set(cacheKey, { data, timestamp: Date.now() });
+            
+            return { data, fromCache: false };
+        } catch (error) {
+            // Return stale cached data if available
+            if (cached) {
+                console.warn('Using stale cache due to error:', error.message);
+                return { data: cached.data, fromCache: true, stale: true };
+            }
+            throw error;
+        }
+    },
+    
+    clearCache() {
+        this.cache.clear();
+        console.log('GitHub cache cleared');
+    }
+};
+
+// ============================================
+// VUE APPLICATION
+// ============================================
+
 const { createApp } = Vue;
 
 createApp({
@@ -8,69 +85,66 @@ createApp({
             // ============================================
             config: {
                 name: 'Steve Appeltants',
-                title: 'Software Manager | Prof. Bachelor of Applied Science',
+                title: 'Software Manager | Prof. Bachelor of Applied Computer Science',
                 bio: 'Final year student combining 15+ years of business leadership with modern software management' +
-                    ' expertise. With deep empassie for healthcare technology, architecture of enterprise solutions and lead' +
+                    ' expertise. With deep empathy for healthcare technology, architecture of enterprise solutions and lead' +
                     ' multidisciplinary teams to transform research into real-world impact. Always with' +
-                    ' sustainability and innovation are at the core.',
+                    ' sustainability and innovation at the core.',
                 email: 'steve.appeltants@outlook.com',
                 github: 'https://github.com/steveappeltantsPXL',
                 linkedin: 'https://www.linkedin.com/in/steve-appeltants/',
                 location: 'Sint-Truiden, Belgium',
                 phone: '+32 470 31 01 81',
                 githubToken: '__GITHUB_TOKEN_PLACEHOLDER__',
-
-                // Featured GitHub repositories (add your repo names here)
+                
+                // Featured GitHub repositories
                 featuredRepos: [
                     'steveappeltantsPXL.github.io',
                     'WebSLT',
-                    'WebSLT-Frontend',                ],
+                    'WebSLT-Frontend',
+                ],
                 
                 skills: [
-                    // ========================================
-                    // SOFT SKILLS (Positions 1-5)
-                    // ========================================
+                    // Soft Skills (Positions 1-5)
                     {
                         category: 'Leadership & Management',
                         items: ['Team Leadership', 'Strategic Planning', 'Coaching & Mentoring',
-                                'Quality Assurance', 'Risk Management', 'Stakeholder Management']
+                            'Quality Assurance', 'Risk Management', 'Stakeholder Management']
                     },
                     {
                         category: 'Communication & Networking',
                         items: ['Stakeholder Engagement', 'Cross-Functional Collaboration',
-                                'Technical Communication', 'Persuasion & Influence',
-                                'Active Listening']
+                            'Technical Communication', 'Persuasion & Influence',
+                            'Active Listening']
                     },
                     {
                         category: 'Organizational & Administrative',
                         items: ['Project Management', 'Budget Management', 'Resource Allocation',
-                                'Planning & Coordination', 'Process Optimization']
+                            'Planning & Coordination', 'Process Optimization']
                     },
                     {
                         category: 'Entrepreneurial & Innovation',
                         items: ['Entrepreneurial Mindset', 'Innovation-Driven Approach',
-                                'Business Development', 'Change Management',
-                                'Initiative & Ownership', 'Continuous Improvement']
+                            'Business Development', 'Change Management',
+                            'Initiative & Ownership', 'Continuous Improvement']
                     },
                     {
                         category: 'X-Factor Model Alignment',
                         items: ['Passion & Empathy', 'Collaborative Spirit',
-                                'Sustainability Mindset', 'Adaptability',
-                                'Pragmatic Thinking', 'International Orientation']
+                            'Sustainability Mindset', 'Adaptability',
+                            'Pragmatic Thinking', 'International Orientation']
                     },
-
-                    // ========================================
-                    // TECHNICAL SKILLS (Positions 6-12)
-                    // ========================================
+                    
+                    // Technical Skills (Positions 6-12)
                     {
                         category: 'Software Management (Primary Role)',
                         items: ['Strategic Planning', 'Stakeholder Management', 'Risk Management',
-                                'Change Management', 'Agile/Scrum', 'Quality Assurance', 'Budget Management']
+                            'Change Management', 'Agile/Scrum', 'Quality Assurance', 'Budget Management']
                     },
                     {
                         category: 'Java Stack (Primary Tech)',
                         items: ['Java Essentials', 'Java Advanced', 'Spring Boot', 'Hibernate',
-                                'Maven/Gradle', 'JUnit', 'Microservices']
+                            'Maven/Gradle', 'JUnit', 'Microservices']
                     },
                     {
                         category: 'Kotlin & Multiplatform',
@@ -79,7 +153,7 @@ createApp({
                     {
                         category: '.NET Stack (Secondary Tech)',
                         items: ['C# Essentials', 'C# Advanced', 'ASP.NET Core 8.0',
-                                'Entity Framework', 'Blazor', '.NET MVC/API']
+                            'Entity Framework', 'Blazor', '.NET MVC/API']
                     },
                     {
                         category: 'Frontend & Web',
@@ -88,7 +162,7 @@ createApp({
                     {
                         category: 'Healthcare & Specializations',
                         items: ['HL7 - FHIR', 'Healthcare Interoperability',
-                                'Enterprise Service Bus', 'Medical Data Systems']
+                            'Enterprise Service Bus', 'Medical Data Systems']
                     },
                     {
                         category: 'DevOps & Tools',
@@ -102,8 +176,7 @@ createApp({
                         company: 'PXL Research - Smart ICT Department',
                         period: '2025 - 2026',
                         highlights: [
-                            'Blueprint and Operational Manager for CIVIC Tech pilot cases using Agile/Scrum' +
-                            ' methodology (Scrum Master role)',
+                            'Blueprint and Operational Manager for CIVIC Tech pilot cases using Agile/Scrum methodology (Scrum Master role)',
                             'Designed and implemented architectural blueprint for research project scalability',
                             'Developed CSM (Content Management System) dashboard for knowledge management and project tracking',
                             'Coordinated cross-functional teams to deliver research outcomes and ensure stakeholder alignment',
@@ -140,42 +213,12 @@ createApp({
                             'Built full-stack solutions with .NET, JavaScript, HTML/CSS',
                             'Applied clean architecture principles'
                         ]
-                    },
-                    {
-                        title: 'Project Lead',
-                        company: 'Algemene Aannemingen Janssen NV',
-                        period: '2018 - 2020',
-                        highlights: [
-                            'Led the Waterkant Mechelen construction project',
-                            'Managed cross-functional teams and budgets',
-                            'Coordinated stakeholder communications'
-                        ]
-                    },
-                    {
-                        title: 'Managing Director',
-                        company: 'S&C Invest BV (Management Company)',
-                        period: '2010 - 2016',
-                        highlights: [
-                            'Strategic business management and planning',
-                            'Financial oversight and budget management',
-                            'Delegated administrator for Mascom NV (2013-2015)'
-                        ]
-                    },
-                    {
-                        title: 'Managing Director',
-                        company: 'Appeltants Bouw BV & Appeltants Dak & Gevel BV',
-                        period: '2001 - 2013',
-                        highlights: [
-                            'Built and led construction companies',
-                            'Managed operations, teams, and client relationships',
-                            'Delivered consistent business growth'
-                        ]
                     }
                 ],
                 
                 education: [
                     {
-                        degree: 'Professional Bachelor of Applied Informatics',
+                        degree: 'Prof. Bachelor of Applied Computer Science',
                         specialization: 'Software Management, Application Development',
                         institution: 'University College PXL - Hasselt',
                         period: '2021 - 2026',
@@ -198,62 +241,35 @@ createApp({
                     { language: 'Dutch', level: 'Native' },
                     { language: 'English', level: 'Professional' }
                 ],
-
+                
                 volunteering: [
                     {
                         title: 'Student Commission Member',
                         organization: 'Hogeschool PXL - Applied Informatics',
                         period: '2021 - 2024',
-                        description: 'The Student Commission is a formal body established at the program level, giving students a voice within their own education. Members advise on all student and education-related topics including curriculum, schedules, student guidance, and communication.',
+                        description: 'The Student Commission is a formal body established at the program level, giving students a voice within their own education.',
                         highlights: [
                             'Represented student interests in program-level decision-making',
                             'Provided feedback on educational profile, curriculum, and exam schedules',
-                            'Participated in improving student support services and communication',
-                            'Collaborated with program leadership on student-related initiatives',
-                            'Served as a bridge between students and faculty administration'
+                            'Participated in improving student support services and communication'
                         ]
                     },
                     {
                         title: 'Code for Belgium Volunteer',
                         organization: 'Code for Belgium',
-                        period: '2023 - Present',
+                        period: '2025 - Present',
                         website: 'https://codeforbelgium.org/projects/',
-                        description: 'Contributing to civic technology projects that improve government services and citizen engagement through open-source development.',
+                        description: 'Contributing to civic technology projects that improve government services and citizen engagement.',
                         highlights: [
                             'Participate in civic tech hackathons and collaborative projects',
                             'Developed open-source solutions for public sector challenges',
-                            'Collaborated with government agencies and civic organizations',
-                            'Contributed to projects improving transparency and accessibility'
+                            'Collaborated with government agencies and civic organizations'
                         ],
                         projects: [
                             {
                                 name: 'Naar school in Vlaanderen',
-                                description: 'A project focused on providing accessible information about school ' +
-                                    'transportation options in Flanders, helping parents and students make informed ' +
-                                    'decisions about their commute to school.',
+                                description: 'Providing accessible information about school transportation options in Flanders.',
                                 website: 'https://naarschoolinvlaanderen.be/'
-                            },
-                            {
-                                name: 'Sint-Vincentius Kuringen',
-                                description: 'A project aimed at supporting the operations of the Sint-Vincentius Kuringen, ' +
-                                    'enhancing their digital infrastructure and improving patient care through ' +
-                                    'technology solutions.',
-                                website: 'https://vincentiuskuringen.be/'
-                            },
-                            {
-                                name: 'Help+',
-                                description: 'A project designed to help individuals in need by connecting them with ' +
-                                    'resources and support services, leveraging technology to facilitate access to help ' +
-                                    'and improve community welfare.',
-                                website: 'https://www.helpplus.be/'
-                            },
-                            {
-                                name: 'Zorghuis Limburg en Zorghuis Oostende',
-                                description: 'A project focused on supporting the booking operations of Zorghuis' +
-                                    ' Limburg and Zorghuis Oostende, two organizations providing care and support for' +
-                                    ' individuals with chronic illnesses, enhancing their digital infrastructure and' +
-                                    ' improving patient care through technology solutions.',
-                                website: 'https://www.zorghuislimburg.be/'
                             }
                         ]
                     }
@@ -267,57 +283,125 @@ createApp({
             repositories: [],
             loading: false,
             error: null,
+            notification: null,
             showScrollNav: false,
             scrollPercentage: 0,
+            activeSection: '',
             
             // Repository management
             showRepoManager: false,
             newRepoName: '',
             tempRepos: [],
-
+            
+            // UI state
+            mobileMenuOpen: false,
+            darkMode: true,
+            
             // Skills separation
-            softSkillsCount: 5  // The first 5 categories are soft skills
+            softSkillsCount: 5
         };
     },
-
+    
     computed: {
         softSkills() {
             return this.config.skills.slice(0, this.softSkillsCount);
         },
         technicalSkills() {
             return this.config.skills.slice(this.softSkillsCount);
+        },
+        hasValidGithubToken() {
+            return this.config.githubToken &&
+                this.config.githubToken !== '__GITHUB_TOKEN_PLACEHOLDER__' &&
+                this.config.githubToken.trim() !== '';
         }
     },
     
     mounted() {
+        this.initTheme();
         this.fetchRepositories();
         this.initScrollAnimations();
         this.initScrollListener();
+        this.initKeyboardShortcuts();
+        this.updateMetaTags();
     },
     
     beforeUnmount() {
         this.removeScrollListener();
+        document.removeEventListener('keydown', this.handleKeydown);
     },
     
     methods: {
         // ============================================
-        // Scroll Handling
+        // Theme Management
+        // ============================================
+        initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            this.darkMode = savedTheme === 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        },
+        
+        toggleTheme() {
+            this.darkMode = !this.darkMode;
+            const theme = this.darkMode ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            this.showNotification({
+                title: 'Theme Changed',
+                message: `Switched to ${theme} mode`,
+                type: 'success'
+            });
+        },
+        
+        // ============================================
+        // Notification System
+        // ============================================
+        showNotification(notification) {
+            this.notification = notification;
+            setTimeout(() => {
+                this.notification = null;
+            }, 5000);
+        },
+        
+        closeNotification() {
+            this.notification = null;
+        },
+        
+        // ============================================
+        // Scroll Handling (Debounced)
         // ============================================
         initScrollListener() {
-            window.addEventListener('scroll', this.handleScroll);
+            window.addEventListener('scroll', this.handleScrollDebounced);
         },
         
         removeScrollListener() {
-            window.removeEventListener('scroll', this.handleScroll);
+            window.removeEventListener('scroll', this.handleScrollDebounced);
         },
         
-        handleScroll() {
+        handleScrollDebounced: debounce(function() {
             const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrolled = window.scrollY;
             const scrollPercentage = windowHeight > 0 ? Math.round((scrolled / windowHeight) * 100) : 0;
             
             this.scrollPercentage = scrollPercentage;
             this.showScrollNav = scrollPercentage > 6;
+            this.updateActiveSection();
+        }, 100),
+        
+        updateActiveSection() {
+            const sections = ['soft-skills', 'technical-skills', 'experience',
+                'education', 'volunteering', 'projects', 'github'];
+            
+            for (const sectionId of sections) {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
+                        this.activeSection = sectionId;
+                        break;
+                    }
+                }
+            }
         },
         
         scrollToTop() {
@@ -325,6 +409,7 @@ createApp({
                 top: 0,
                 behavior: 'smooth'
             });
+            this.closeMobileMenu();
         },
         
         scrollToSection(sectionId) {
@@ -334,27 +419,89 @@ createApp({
                     behavior: 'smooth',
                     block: 'start'
                 });
+                this.closeMobileMenu();
             }
         },
         
         // ============================================
-        // Scroll Animations (Timeline)
+        // Mobile Menu
+        // ============================================
+        toggleMobileMenu() {
+            this.mobileMenuOpen = !this.mobileMenuOpen;
+        },
+        
+        closeMobileMenu() {
+            this.mobileMenuOpen = false;
+        },
+        
+        // ============================================
+        // Keyboard Shortcuts
+        // ============================================
+        initKeyboardShortcuts() {
+            document.addEventListener('keydown', this.handleKeydown);
+        },
+        
+        handleKeydown(e) {
+            // Alt + number to jump to section
+            if (e.altKey && !isNaN(e.key)) {
+                const sections = ['soft-skills', 'technical-skills', 'experience',
+                    'education', 'volunteering', 'projects', 'github'];
+                const index = parseInt(e.key) - 1;
+                if (sections[index]) {
+                    this.scrollToSection(sections[index]);
+                    e.preventDefault();
+                }
+            }
+            
+            // Escape to close dialogs
+            if (e.key === 'Escape') {
+                if (this.showRepoManager) {
+                    this.cancelRepoChanges();
+                }
+                if (this.mobileMenuOpen) {
+                    this.closeMobileMenu();
+                }
+                if (this.notification) {
+                    this.closeNotification();
+                }
+            }
+            
+            // Alt + T for theme toggle
+            if (e.altKey && e.key.toLowerCase() === 't') {
+                this.toggleTheme();
+                e.preventDefault();
+            }
+        },
+        
+        // ============================================
+        // Scroll Animations (Intersection Observer)
         // ============================================
         initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -10% 0px'
+            };
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        // Optionally unobserve after animation completes
+                        // observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            });
+            }, observerOptions);
             
+            // Observe all timeline items
             const timelineItems = document.querySelectorAll('.timeline-item');
             timelineItems.forEach(item => {
                 observer.observe(item);
+            });
+            
+            // Observe other animated elements
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
             });
         },
         
@@ -364,7 +511,6 @@ createApp({
         toggleRepoManager() {
             this.showRepoManager = !this.showRepoManager;
             if (this.showRepoManager) {
-                // Create a copy of current repos for editing
                 this.tempRepos = [...this.config.featuredRepos];
             }
         },
@@ -373,38 +519,61 @@ createApp({
             const repoName = this.newRepoName.trim();
             
             if (!repoName) {
-                alert('Please enter a repository name');
+                this.showNotification({
+                    title: 'Validation Error',
+                    message: 'Please enter a repository name',
+                    type: 'warning'
+                });
                 return;
             }
             
-            // Check for duplicates
             if (this.tempRepos.includes(repoName)) {
-                alert('This repository is already in the list');
+                this.showNotification({
+                    title: 'Duplicate Repository',
+                    message: 'This repository is already in the list',
+                    type: 'warning'
+                });
                 return;
             }
             
             this.tempRepos.push(repoName);
             this.newRepoName = '';
+            
+            this.showNotification({
+                title: 'Repository Added',
+                message: `${repoName} added to the list`,
+                type: 'success'
+            });
         },
         
         removeRepository(index) {
-            if (confirm('Are you sure you want to remove this repository?')) {
+            const repoName = this.tempRepos[index];
+            if (confirm(`Remove "${repoName}" from featured repositories?`)) {
                 this.tempRepos.splice(index, 1);
+                this.showNotification({
+                    title: 'Repository Removed',
+                    message: `${repoName} removed from the list`,
+                    type: 'info'
+                });
             }
         },
         
         saveRepositories() {
-            // Update the config with new repos
             this.config.featuredRepos = [...this.tempRepos];
             
-            // Fetch the updated repositories
+            // Clear cache to force fresh fetch
+            githubService.clearCache();
+            
+            // Fetch updated repositories
             this.fetchRepositories();
             
-            // Close the manager
             this.showRepoManager = false;
             
-            // Notify user
-            alert('Repository list updated! The page will now fetch the new repositories.');
+            this.showNotification({
+                title: 'Repositories Updated',
+                message: 'Fetching latest repository data...',
+                type: 'success'
+            });
         },
         
         cancelRepoChanges() {
@@ -413,7 +582,7 @@ createApp({
         },
         
         // ============================================
-        // Fetch GitHub Repositories
+        // Fetch GitHub Repositories (Enhanced)
         // ============================================
         async fetchRepositories() {
             if (!this.config.github || this.config.featuredRepos.length === 0) {
@@ -426,64 +595,109 @@ createApp({
             this.error = null;
             
             try {
-                // Extract username from GitHub URL
                 const githubUsername = this.extractGitHubUsername(this.config.github);
+                
+                if (!githubUsername) {
+                    throw new Error('Invalid GitHub URL format');
+                }
                 
                 const repos = [];
                 const failedRepos = [];
                 
+                // Fetch repositories with caching
                 for (const repoName of this.config.featuredRepos) {
                     try {
-                        const response = await fetch(
-                            `https://api.github.com/repos/${githubUsername}/${repoName}`,
-                            {
-                                headers: {
-                                    'Accept': 'application/vnd.github.v3+json',
-                                    'Authorization': `Bearer ${this.config.githubToken}`
-                                }
-                            }
-                        );
+                        const url = `https://api.github.com/repos/${githubUsername}/${repoName}`;
+                        const headers = {
+                            'Accept': 'application/vnd.github.v3+json'
+                        };
                         
-                        if (!response.ok) {
-                            console.error(`Failed to fetch ${repoName}: ${response.status}`);
-                            failedRepos.push(repoName);
-                            continue;
+                        // Only add Authorization if we have a valid token
+                        if (this.hasValidGithubToken) {
+                            headers['Authorization'] = `Bearer ${this.config.githubToken}`;
                         }
                         
-                        const data = await response.json();
-                        repos.push(data);
+                        const { data, fromCache, stale } = await githubService.fetchWithCache(url, { headers });
+                        
+                        // Add metadata about cache status
+                        repos.push({
+                            ...data,
+                            _cached: fromCache,
+                            _stale: stale || false
+                        });
+                        
+                        if (fromCache) {
+                            console.log(`Using cached data for ${repoName}${stale ? ' (stale)' : ''}`);
+                        }
+                        
                     } catch (err) {
                         console.error(`Error fetching ${repoName}:`, err);
-                        failedRepos.push(repoName);
+                        failedRepos.push({ name: repoName, error: err.message });
                     }
                 }
                 
                 if (repos.length === 0) {
-                    this.error = 'No repositories found. Please check your repository names and GitHub username.';
+                    this.error = 'No repositories found. Check repository names and GitHub username.';
+                    
+                    if (failedRepos.length > 0) {
+                        this.error += '\n\nFailed repositories:\n' +
+                            failedRepos.map(r => `- ${r.name}: ${r.error}`).join('\n');
+                    }
                 } else {
                     this.repositories = repos;
                     
+                    // Show notification if using cached data
+                    const cachedCount = repos.filter(r => r._cached).length;
+                    if (cachedCount > 0) {
+                        console.log(`${cachedCount}/${repos.length} repositories loaded from cache`);
+                    }
+                    
                     // Warn about failed repos
                     if (failedRepos.length > 0) {
-                        console.warn('Failed to fetch:', failedRepos.join(', '));
+                        this.showNotification({
+                            title: 'Partial Success',
+                            message: `${repos.length} repositories loaded. ${failedRepos.length} failed to load.`,
+                            type: 'warning'
+                        });
                     }
                 }
             } catch (err) {
                 this.error = `Error fetching repositories: ${err.message}`;
                 console.error('Repository fetch error:', err);
+                
+                this.showNotification({
+                    title: 'Error',
+                    message: err.message,
+                    type: 'error'
+                });
             } finally {
                 this.loading = false;
             }
         },
         
+        retryFetchRepositories() {
+            githubService.clearCache();
+            this.fetchRepositories();
+        },
+        
         extractGitHubUsername(githubUrl) {
-            // Handle both full URLs and just usernames
             if (githubUrl.includes('github.com/')) {
                 const match = githubUrl.match(/github\.com\/([^\/]+)/);
                 return match ? match[1] : null;
             }
-            // If it's just a username, return it
-            return githubUrl.replace(/\/$/, ''); // Remove trailing slash
+            return githubUrl.replace(/\/$/, '');
+        },
+        
+        // ============================================
+        // SEO & Meta Tags
+        // ============================================
+        updateMetaTags() {
+            document.title = `${this.config.name} - ${this.config.title}`;
+            
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.setAttribute('content', this.config.bio);
+            }
         },
         
         // ============================================
@@ -513,13 +727,14 @@ createApp({
                 'C#': 'dotnet',
                 'Vue': 'vue',
                 'JavaScript': 'javascript',
-                'TypeScript': 'javascript'
+                'TypeScript': 'javascript',
+                'HTML': 'html',
+                'CSS': 'css'
             };
             return langMap[language] || '';
         },
         
         getSkillClass(skill) {
-            // Map skills to color classes
             const skillLower = skill.toLowerCase();
             
             if (skillLower.includes('java') && !skillLower.includes('javascript')) {
@@ -536,7 +751,7 @@ createApp({
                 return 'vue';
             }
             
-            return ''; // Default styling
+            return '';
         }
     }
 }).mount('#app');

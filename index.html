@@ -70,9 +70,12 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
 </head>
 <body>
+<!-- Skip to Content (Accessibility) -->
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
 <div id="app">
     <!-- Hero Section -->
-    <header class="hero">
+    <header class="hero" id="main-content">
         <h1>{{ config.name }}</h1>
         <p class="hero-title">{{ config.title }}</p>
         <p class="hero-bio">{{ config.bio }}</p>
@@ -89,7 +92,11 @@
             </a>
         </div>
         
-        <div class="scroll-indicator" @click="scrollToSection('soft-skills')" aria-label="Scroll down">
+        <div class="scroll-indicator" 
+             @click="scrollToSection('soft-skills')" 
+             aria-label="Scroll down"
+             tabindex="0"
+             @keyup.enter="scrollToSection('soft-skills')">
             ↓ Discover my journey
         </div>
     </header>
@@ -271,28 +278,40 @@
         <div class="github-container">
             <div class="section-header">
                 <h2>GitHub Projects</h2>
-                <button @click="toggleRepoManager" class="manage-repos-btn">
+                <button @click="toggleRepoManager" 
+                        class="manage-repos-btn"
+                        :aria-expanded="showRepoManager"
+                        aria-controls="repo-manager">
                     {{ showRepoManager ? '✕ Close' : '⚙️ Manage Repositories' }}
                 </button>
             </div>
             
             <!-- Repository Manager -->
-            <div v-if="showRepoManager" class="repo-manager">
+            <div v-if="showRepoManager" 
+                 id="repo-manager" 
+                 class="repo-manager"
+                 role="region"
+                 aria-label="Repository management">
                 <h3>Manage Featured Repositories</h3>
                 <div class="repo-manager-content">
                     <div class="current-repos">
                         <h4>Current Featured Repos:</h4>
                         <div v-for="(repo, index) in tempRepos" :key="index" class="repo-item">
                             <span>{{ repo }}</span>
-                            <button @click="removeRepository(index)" class="remove-btn">Remove</button>
+                            <button @click="removeRepository(index)" 
+                                    class="remove-btn"
+                                    :aria-label="`Remove ${repo}`">
+                                Remove
+                            </button>
                         </div>
                     </div>
                     <div class="add-repo">
                         <input
-                                v-model="newRepoName"
-                                @keyup.enter="addRepository"
-                                placeholder="Enter repository name"
-                                class="repo-input"
+                            v-model="newRepoName"
+                            @keyup.enter="addRepository"
+                            placeholder="Enter repository name"
+                            class="repo-input"
+                            aria-label="Repository name"
                         >
                         <button @click="addRepository" class="add-btn">Add Repository</button>
                     </div>
@@ -303,33 +322,55 @@
                 </div>
             </div>
             
-            <!-- Loading State -->
-            <div v-if="loading" class="loading-state">
-                <p>🔄 Loading projects from GitHub...</p>
+            <!-- Loading State with Skeleton -->
+            <div v-if="loading" class="github-grid" aria-live="polite" aria-busy="true">
+                <div v-for="n in 3" :key="n" class="github-card skeleton" aria-hidden="true">
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-stats"></div>
+                </div>
             </div>
             
             <!-- Error State -->
-            <div v-else-if="error" class="error-state">
+            <div v-else-if="error" class="error-state" role="alert">
+                <h3>⚠️ Unable to Load Repositories</h3>
                 <p>{{ error }}</p>
-                <button @click="fetchRepositories" class="retry-btn">🔄 Retry</button>
+                <button @click="retryFetchRepositories" class="retry-btn">
+                    🔄 Retry
+                </button>
             </div>
             
             <!-- GitHub Projects Grid -->
             <div v-else-if="repositories.length > 0" class="github-grid">
-                <article v-for="repo in repositories" :key="repo.name" class="github-card">
+                <article v-for="repo in repositories" 
+                         :key="repo.name" 
+                         class="github-card">
                     <h3>{{ repo.name }}</h3>
                     <p class="repo-description">{{ repo.description || 'No description available' }}</p>
                     
                     <div class="github-stats">
-                            <span v-if="repo.language" class="tech-badge" :class="getLanguageClass(repo.language)">
+                        <span v-if="repo.language" 
+                              class="repo-language">
+                            <span class="language-dot" :class="getLanguageClass(repo.language)"></span>
+                            <span class="tech-badge" :class="getLanguageClass(repo.language)">
                                 {{ repo.language }}
                             </span>
-                        <span v-if="repo.stargazers_count">⭐ {{ repo.stargazers_count }}</span>
-                        <span v-if="repo.forks_count">🔀 {{ repo.forks_count }}</span>
-                        <span v-if="repo.updated_at">📅 {{ formatDate(repo.updated_at) }}</span>
+                        </span>
+                        <span v-if="repo.stargazers_count" title="Stars">⭐ {{ repo.stargazers_count }}</span>
+                        <span v-if="repo.forks_count" title="Forks">🔀 {{ repo.forks_count }}</span>
+                        <span v-if="repo.updated_at" :title="'Last updated: ' + new Date(repo.updated_at).toLocaleDateString()">
+                            📅 {{ formatDate(repo.updated_at) }}
+                        </span>
+                        <span v-if="repo._cached" class="repo-cache-indicator" title="Loaded from cache">
+                            💾
+                        </span>
                     </div>
                     
-                    <a :href="repo.html_url" target="_blank" rel="noopener noreferrer" class="github-link">
+                    <a :href="repo.html_url" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="github-link">
                         View on GitHub →
                     </a>
                 </article>
@@ -343,7 +384,7 @@
     </section>
     
     <!-- Languages Section -->
-    <section class="languages-section">
+    <section class="languages-section" id="languages">
         <div class="languages-container">
             <h2>Languages</h2>
             <div class="languages-grid">
@@ -361,33 +402,123 @@
             <p>&copy; {{ new Date().getFullYear() }} {{ config.name }}. All rights reserved.</p>
             <p class="footer-meta">
                 Built with Vue.js | Hosted on GitHub Pages |
-                <a href="mailto:{{ config.email }}">{{ config.email }}</a>
+                <a :href="`mailto:${config.email}`">{{ config.email }}</a>
             </p>
         </div>
     </footer>
     
+    <!-- Mobile Menu Toggle (NEW) -->
+    <button @click="toggleMobileMenu" 
+            class="mobile-nav-toggle"
+            :class="{ open: mobileMenuOpen }"
+            :aria-expanded="mobileMenuOpen"
+            aria-label="Toggle navigation menu"
+            aria-controls="scroll-nav-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+    
+    <!-- Theme Toggle Button (NEW) -->
+    <button @click="toggleTheme" 
+            class="theme-toggle" 
+            :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+            :title="'Toggle theme (Alt+T) - Currently ' + (darkMode ? 'Dark' : 'Light') + ' mode'">
+        {{ darkMode ? '☀️' : '🌙' }}
+    </button>
+    
     <!-- Scroll Navigation -->
-    <nav class="scroll-nav" :class="{ visible: showScrollNav }" aria-label="Quick navigation">
-        <div class="scroll-nav-menu">
+    <nav class="scroll-nav" 
+         :class="{ visible: showScrollNav }" 
+         aria-label="Quick navigation"
+         role="navigation">
+        <div id="scroll-nav-menu"
+             class="scroll-nav-menu" 
+             :class="{ 'mobile-open': mobileMenuOpen }">
             <div class="scroll-nav-title">
                 Jump to Section
-                <span class="scroll-percentage-inline">{{ scrollPercentage }}</span>
+                <span class="scroll-percentage-inline" 
+                      :aria-label="`Page scroll progress: ${scrollPercentage}%`">
+                    {{ scrollPercentage }}
+                </span>
             </div>
-            <button class="scroll-nav-btn" @click="scrollToSection('soft-skills')">Soft Skills</button>
-            <button class="scroll-nav-btn" @click="scrollToSection('technical-skills')">Technical Skills</button>
-            <button class="scroll-nav-btn" @click="scrollToSection('experience')">Experience</button>
-            <button class="scroll-nav-btn" @click="scrollToSection('education')">Education</button>
-            <button class="scroll-nav-btn" @click="scrollToSection('volunteering')">Volunteering</button>
-            <button class="scroll-nav-btn" @click="scrollToSection('projects')">Featured Projects</button>
-            <button class="scroll-nav-btn" @click="scrollToSection('github')">GitHub Projects</button>
+            <button class="scroll-nav-btn" 
+                    :class="{ active: activeSection === 'soft-skills' }"
+                    @click="scrollToSection('soft-skills')"
+                    aria-label="Navigate to Soft Skills section">
+                Soft Skills
+            </button>
+            <button class="scroll-nav-btn" 
+                    :class="{ active: activeSection === 'technical-skills' }"
+                    @click="scrollToSection('technical-skills')"
+                    aria-label="Navigate to Technical Skills section">
+                Technical Skills
+            </button>
+            <button class="scroll-nav-btn" 
+                    :class="{ active: activeSection === 'experience' }"
+                    @click="scrollToSection('experience')"
+                    aria-label="Navigate to Experience section">
+                Experience
+            </button>
+            <button class="scroll-nav-btn" 
+                    :class="{ active: activeSection === 'education' }"
+                    @click="scrollToSection('education')"
+                    aria-label="Navigate to Education section">
+                Education
+            </button>
+            <button class="scroll-nav-btn" 
+                    :class="{ active: activeSection === 'volunteering' }"
+                    @click="scrollToSection('volunteering')"
+                    aria-label="Navigate to Volunteering section">
+                Volunteering
+            </button>
+            <button class="scroll-nav-btn" 
+                    :class="{ active: activeSection === 'projects' }"
+                    @click="scrollToSection('projects')"
+                    aria-label="Navigate to Featured Projects section">
+                Featured Projects
+            </button>
+            <button class="scroll-nav-btn" 
+                    :class="{ active: activeSection === 'github' }"
+                    @click="scrollToSection('github')"
+                    aria-label="Navigate to GitHub Projects section">
+                GitHub Projects
+            </button>
         </div>
-        <button class="scroll-top-btn" @click="scrollToTop" title="Back to top" aria-label="Scroll to top">
+        <button class="scroll-top-btn" 
+                @click="scrollToTop" 
+                title="Back to top" 
+                aria-label="Scroll to top of page">
             ↑
         </button>
     </nav>
+    
+    <!-- Notification Component (NEW) -->
+    <transition name="notification">
+        <div v-if="notification" 
+             class="notification" 
+             :class="`notification-${notification.type}`"
+             role="alert"
+             aria-live="polite"
+             aria-atomic="true">
+            <strong>{{ notification.title }}</strong>
+            <p>{{ notification.message }}</p>
+            <button @click="closeNotification" 
+                    aria-label="Close notification"
+                    title="Close (or press Escape)">
+                ×
+            </button>
+        </div>
+    </transition>
 </div>
 
 <!-- External JavaScript -->
 <script src="/assets/js/app.js"></script>
+
+<!-- Keyboard Shortcuts Help (Hidden, for screen readers) -->
+<div class="sr-only" aria-live="polite" role="status">
+    <p>Keyboard shortcuts available: Alt+1 through Alt+7 to navigate sections, Alt+T to toggle theme, Escape to close dialogs</p>
+</div>
+
 </body>
 </html>
