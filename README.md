@@ -3,7 +3,8 @@
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success)](https://steveappeltantspxl.github.io/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Professional portfolio and curriculum vitae for Steve Appeltants – Software Manager and Bachelor Applied Science student specializing in healthcare technology and enterprise solutions.
+Professional portfolio and curriculum vitae for Steve Appeltants – Prof. Bachelor Applied 
+Computer Science – Software Management specializing in healthcare technology and enterprise solutions.
 
 ## 🚀 Live Site
 
