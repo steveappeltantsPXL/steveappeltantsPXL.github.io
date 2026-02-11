@@ -104,34 +104,22 @@ createApp({
                 ],
                 
                 skills: [
-                    // Soft Skills (Positions 1-5)
+                    // Soft Skills (Positions 1-4)
                     {
-                        category: 'Leadership & Management',
-                        items: ['Team Leadership', 'Strategic Planning', 'Coaching & Mentoring',
-                            'Quality Assurance', 'Risk Management', 'Stakeholder Management']
+                        category: 'Leadership & Strategy',
+                        items: ['Team Leadership', 'Strategic Planning', 'Coaching & Mentoring', 'Change Management']
                     },
                     {
-                        category: 'Communication & Networking',
-                        items: ['Stakeholder Engagement', 'Cross-Functional Collaboration',
-                            'Technical Communication', 'Persuasion & Influence',
-                            'Active Listening']
+                        category: 'Communication',
+                        items: ['Stakeholder Engagement', 'Cross-Functional Collaboration', 'Technical Communication']
                     },
                     {
-                        category: 'Organizational & Administrative',
-                        items: ['Project Management', 'Budget Management', 'Resource Allocation',
-                            'Planning & Coordination', 'Process Optimization']
+                        category: 'Project & Operations',
+                        items: ['Project Management', 'Resource Allocation', 'Process Optimization', 'Quality Assurance']
                     },
                     {
-                        category: 'Entrepreneurial & Innovation',
-                        items: ['Entrepreneurial Mindset', 'Innovation-Driven Approach',
-                            'Business Development', 'Change Management',
-                            'Initiative & Ownership', 'Continuous Improvement']
-                    },
-                    {
-                        category: 'X-Factor Model Alignment',
-                        items: ['Passion & Empathy', 'Collaborative Spirit',
-                            'Sustainability Mindset', 'Adaptability',
-                            'Pragmatic Thinking', 'International Orientation']
+                        category: 'Innovation',
+                        items: ['Entrepreneurial Mindset', 'Innovation-Driven Approach', 'Continuous Improvement']
                     },
                     
                     // Technical Skills (Positions 6-12)
@@ -336,7 +324,7 @@ createApp({
             darkMode: false,
             
             // Skills separation
-            softSkillsCount: 5
+            softSkillsCount: 4
         };
     },
     
