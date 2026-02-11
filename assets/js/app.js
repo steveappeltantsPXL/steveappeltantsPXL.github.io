@@ -196,7 +196,7 @@ createApp({
                         ]
                     },
                     {
-                        title: 'Entrepreneurship Project - Visear (Sign Language Translation Application)',
+                        title: 'Entrepreneurship Project (Sign Language Translation Application)',
                         company: 'University College PXL',
                         period: '2024 - 2025',
                         highlights: [
