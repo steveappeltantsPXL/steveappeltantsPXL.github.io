@@ -27,7 +27,7 @@ const githubService = {
         // Return cached data if valid
         if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
             console.log('Using cached data for:', url);
-            return { data: cached.data, fromCache: true };
+            return {data: cached.data, fromCache: true};
         }
         
         try {
@@ -52,14 +52,14 @@ const githubService = {
             const data = await response.json();
             
             // Cache the successful response
-            this.cache.set(cacheKey, { data, timestamp: Date.now() });
+            this.cache.set(cacheKey, {data, timestamp: Date.now()});
             
-            return { data, fromCache: false };
+            return {data, fromCache: false};
         } catch (error) {
             // Return stale cached data if available
             if (cached) {
                 console.warn('Using stale cache due to error:', error.message);
-                return { data: cached.data, fromCache: true, stale: true };
+                return {data: cached.data, fromCache: true, stale: true};
             }
             throw error;
         }
@@ -75,7 +75,7 @@ const githubService = {
 // VUE APPLICATION
 // ============================================
 
-const { createApp } = Vue;
+const {createApp} = Vue;
 
 createApp({
     data() {
@@ -238,8 +238,8 @@ createApp({
                 ],
                 
                 languages: [
-                    { language: 'Dutch', level: 'Native' },
-                    { language: 'English', level: 'Professional' }
+                    {language: 'Dutch', level: 'Native'},
+                    {language: 'English', level: 'Professional'}
                 ],
                 
                 volunteering: [
@@ -268,8 +268,32 @@ createApp({
                         projects: [
                             {
                                 name: 'Naar school in Vlaanderen',
-                                description: 'Providing accessible information about school transportation options in Flanders.',
+                                description: 'A project focused on providing accessible information about school ' +
+                                    'transportation options in Flanders, helping parents and students make informed ' +
+                                    'decisions about their commute to school.',
                                 website: 'https://naarschoolinvlaanderen.be/'
+                            },
+                            {
+                                name: 'Sint-Vincentius Kuringen',
+                                description: 'A project aimed at supporting the operations of the Sint-Vincentius Kuringen, ' +
+                                    'enhancing their digital infrastructure and improving patient care through ' +
+                                    'technology solutions.',
+                                website: 'https://vincentiuskuringen.be/'
+                            },
+                            {
+                                name: 'Help+',
+                                description: 'A project designed to help individuals in need by connecting them with ' +
+                                    'resources and support services, leveraging technology to facilitate access to help ' +
+                                    'and improve community welfare.',
+                                website: 'https://www.helpplus.be/'
+                            },
+                            {
+                                name: 'Zorghuis Limburg en Zorghuis Oostende',
+                                description: 'A project focused on supporting the booking operations of Zorghuis' +
+                                    ' Limburg and Zorghuis Oostende, two organizations providing care and support for' +
+                                    ' individuals with chronic illnesses, enhancing their digital infrastructure and' +
+                                    ' improving patient care through technology solutions.',
+                                website: 'https://www.zorghuislimburg.be/'
                             }
                         ]
                     }
@@ -378,7 +402,7 @@ createApp({
             window.removeEventListener('scroll', this.handleScrollDebounced);
         },
         
-        handleScrollDebounced: debounce(function() {
+        handleScrollDebounced: debounce(function () {
             const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrolled = window.scrollY;
             const scrollPercentage = windowHeight > 0 ? Math.round((scrolled / windowHeight) * 100) : 0;
@@ -617,7 +641,7 @@ createApp({
                             headers['Authorization'] = `Bearer ${this.config.githubToken}`;
                         }
                         
-                        const { data, fromCache, stale } = await githubService.fetchWithCache(url, { headers });
+                        const {data, fromCache, stale} = await githubService.fetchWithCache(url, {headers});
                         
                         // Add metadata about cache status
                         repos.push({
@@ -632,7 +656,7 @@ createApp({
                         
                     } catch (err) {
                         console.error(`Error fetching ${repoName}:`, err);
-                        failedRepos.push({ name: repoName, error: err.message });
+                        failedRepos.push({name: repoName, error: err.message});
                     }
                 }
                 
