@@ -144,7 +144,7 @@ createApp({
                     },
                     {
                         category: 'Frontend & Web',
-                        items: ['Vue.js', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Responsive Design']
+                        items: ['Vue.js', 'React', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Responsive Design']
                     },
                     {
                         category: 'Healthcare & Specializations',
@@ -752,6 +752,7 @@ createApp({
                 'Kotlin': 'kotlin',
                 'C#': 'dotnet',
                 'Vue': 'vue',
+                'React': 'react',
                 'JavaScript': 'javascript',
                 'TypeScript': 'javascript',
                 'HTML': 'html',
@@ -776,7 +777,10 @@ createApp({
             if (skillLower.includes('vue')) {
                 return 'vue';
             }
-            
+            if (skillLower.includes('react')) {
+                return 'react';
+            }
+
             return '';
         }
     }
