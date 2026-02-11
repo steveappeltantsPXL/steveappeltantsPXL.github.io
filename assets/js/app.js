@@ -27,7 +27,7 @@ const githubService = {
         // Return cached data if valid
         if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
             console.log('Using cached data for:', url);
-            return { data: cached.data, fromCache: true };
+            return {data: cached.data, fromCache: true};
         }
         
         try {
@@ -52,14 +52,14 @@ const githubService = {
             const data = await response.json();
             
             // Cache the successful response
-            this.cache.set(cacheKey, { data, timestamp: Date.now() });
+            this.cache.set(cacheKey, {data, timestamp: Date.now()});
             
-            return { data, fromCache: false };
+            return {data, fromCache: false};
         } catch (error) {
             // Return stale cached data if available
             if (cached) {
                 console.warn('Using stale cache due to error:', error.message);
-                return { data: cached.data, fromCache: true, stale: true };
+                return {data: cached.data, fromCache: true, stale: true};
             }
             throw error;
         }
@@ -75,7 +75,7 @@ const githubService = {
 // VUE APPLICATION
 // ============================================
 
-const { createApp } = Vue;
+const {createApp} = Vue;
 
 createApp({
     data() {
@@ -85,8 +85,8 @@ createApp({
             // ============================================
             config: {
                 name: 'Steve Appeltants',
-                title: 'Software Manager | Prof. Bachelor of Applied Computer Science',
-                bio: 'Final year student combining 15+ years of business leadership with modern software management' +
+                title: 'Prof. Bachelor of Applied Computer Science - Software Management',
+                bio: 'Combining 15+ years of business leadership with modern software management and development' +
                     ' expertise. With deep empathy for healthcare technology, architecture of enterprise solutions and lead' +
                     ' multidisciplinary teams to transform research into real-world impact. Always with' +
                     ' sustainability and innovation at the core.',
@@ -178,7 +178,8 @@ createApp({
                         highlights: [
                             'Blueprint and Operational Manager for CIVIC Tech pilot cases using Agile/Scrum methodology (Scrum Master role)',
                             'Designed and implemented architectural blueprint for research project scalability',
-                            'Developed CSM (Content Management System) dashboard for knowledge management and project tracking',
+                            'Developed CMS (Content Management System) dashboard for knowledge management and project' +
+                            ' tracking',
                             'Coordinated cross-functional teams to deliver research outcomes and ensure stakeholder alignment',
                             'Contributed to Smart ICT research initiatives focused on civic technology solutions'
                         ]
@@ -192,6 +193,19 @@ createApp({
                             'Implementing HL7/FHIR healthcare interoperability solutions',
                             'Full-stack development with Kotlin and Vue.js',
                             'Managing stakeholder requirements and project delivery'
+                        ]
+                    },
+                    {
+                        title: 'Entrepreneurship Project - Visear (Sign Language Translation Application)',
+                        company: 'University College PXL',
+                        period: '2024 - 2025',
+                        highlights: [
+                            `Founded Visear startup concept for real-time sign language translation using AI/ML technology`,
+                            'Developed business model with €2.3M projected revenue targeting 70,000+ deaf individuals in Belgium/Netherlands',
+                            'Designed cross-platform architecture with AI-powered bidirectional translation (speech-to-sign & sign-to-speech)',
+                            'Created financial projections with €636K development costs and break-even analysis for investor presentations',
+                            'Established strategic partnerships with PXL-Research, Cegeka and cloud service providers',
+                            'Pitched subscription-based SaaS model (€2.40/month) with 45% adoption rate targeting European market expansion'
                         ]
                     },
                     {
@@ -238,8 +252,8 @@ createApp({
                 ],
                 
                 languages: [
-                    { language: 'Dutch', level: 'Native' },
-                    { language: 'English', level: 'Professional' }
+                    {language: 'Dutch', level: 'Native'},
+                    {language: 'English', level: 'Professional'}
                 ],
                 
                 volunteering: [
@@ -268,8 +282,32 @@ createApp({
                         projects: [
                             {
                                 name: 'Naar school in Vlaanderen',
-                                description: 'Providing accessible information about school transportation options in Flanders.',
+                                description: 'A project focused on providing accessible information about school ' +
+                                    'transportation options in Flanders, helping parents and students make informed ' +
+                                    'decisions about their commute to school.',
                                 website: 'https://naarschoolinvlaanderen.be/'
+                            },
+                            {
+                                name: 'Sint-Vincentius Kuringen',
+                                description: 'A project aimed at supporting the operations of the Sint-Vincentius Kuringen, ' +
+                                    'enhancing their digital infrastructure and improving patient care through ' +
+                                    'technology solutions.',
+                                website: 'https://vincentiuskuringen.be/'
+                            },
+                            {
+                                name: 'Help+',
+                                description: 'A project designed to help individuals in need by connecting them with ' +
+                                    'resources and support services, leveraging technology to facilitate access to help ' +
+                                    'and improve community welfare.',
+                                website: 'https://www.helpplus.be/'
+                            },
+                            {
+                                name: 'Zorghuis Limburg en Zorghuis Oostende',
+                                description: 'A project focused on supporting the booking operations of Zorghuis' +
+                                    ' Limburg and Zorghuis Oostende, two organizations providing care and support for' +
+                                    ' individuals with chronic illnesses, enhancing their digital infrastructure and' +
+                                    ' improving patient care through technology solutions.',
+                                website: 'https://www.zorghuislimburg.be/'
                             }
                         ]
                     }
@@ -378,7 +416,7 @@ createApp({
             window.removeEventListener('scroll', this.handleScrollDebounced);
         },
         
-        handleScrollDebounced: debounce(function() {
+        handleScrollDebounced: debounce(function () {
             const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrolled = window.scrollY;
             const scrollPercentage = windowHeight > 0 ? Math.round((scrolled / windowHeight) * 100) : 0;
@@ -617,7 +655,7 @@ createApp({
                             headers['Authorization'] = `Bearer ${this.config.githubToken}`;
                         }
                         
-                        const { data, fromCache, stale } = await githubService.fetchWithCache(url, { headers });
+                        const {data, fromCache, stale} = await githubService.fetchWithCache(url, {headers});
                         
                         // Add metadata about cache status
                         repos.push({
@@ -632,7 +670,7 @@ createApp({
                         
                     } catch (err) {
                         console.error(`Error fetching ${repoName}:`, err);
-                        failedRepos.push({ name: repoName, error: err.message });
+                        failedRepos.push({name: repoName, error: err.message});
                     }
                 }
                 
