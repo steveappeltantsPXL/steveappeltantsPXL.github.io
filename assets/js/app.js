@@ -183,17 +183,21 @@ createApp({
                         ]
                     },
                     {
-                        title: 'Entrepreneurship Project (Sign Language Translation Application)',
+                        title: 'Entrepreneurship Project',
                         company: 'University College PXL',
                         period: '2024 - 2025',
                         highlights: [
-                            `Founded Visear startup concept for real-time sign language translation using AI/ML technology`,
-                            'Developed business model with €2.3M projected revenue targeting 70,000+ deaf individuals in Belgium/Netherlands',
+                            'Founded Visear startup concept for real-time sign language translation using AI/ML' +
+                            ' technology',
+                            'Developed business model targeting accessibility for the deaf community in Belgium and' +
+                            ' the Netherlands',
                             'Designed cross-platform architecture with AI-powered bidirectional translation' +
                             ' (speech-to-sign and sign-to-speech)',
-                            'Created financial projections with €636K development costs and break-even analysis for investor presentations',
+                            'Created comprehensive development roadmap and investor presentations demonstrating' +
+                            ' market viability',
                             'Established strategic partnerships with PXL-Research, Cegeka and cloud service providers',
-                            'Pitched subscription-based SaaS model (€2.40/month) with 45% adoption rate targeting European market expansion'
+                            'Pitched subscription-based SaaS model with a scalable pricing strategy for European' +
+                            ' market expansion'
                         ]
                     },
                     {
@@ -574,7 +578,7 @@ createApp({
         
         removeRepository(index) {
             const repoName = this.tempRepos[index];
-            if (confirm(`Remove "${repoName}" from featured repositories?`)) {
+            if (confirm(`Remove "${repoName}" from featured repositories ? `)) {
                 this.tempRepos.splice(index, 1);
                 this.showNotification({
                     title: 'Repository Removed',
@@ -633,7 +637,8 @@ createApp({
                 // Fetch repositories with caching
                 for (const repoName of this.config.featuredRepos) {
                     try {
-                        const url = `https://api.github.com/repos/${githubUsername}/${repoName}`;
+                        const url = `https
+    ://api.github.com/repos/${githubUsername}/${repoName}`;
                         const headers = {
                             'Accept': 'application/vnd.github.v3+json'
                         };
@@ -656,7 +661,8 @@ createApp({
                             console.log(`Using cached data for ${repoName}${stale ? ' (stale)' : ''}`);
                         }
                         
-                    } catch (err) {
+                    } catch
+                        (err) {
                         console.error(`Error fetching ${repoName}:`, err);
                         failedRepos.push({name: repoName, error: err.message});
                     }
@@ -687,7 +693,8 @@ createApp({
                         });
                     }
                 }
-            } catch (err) {
+            } catch
+                (err) {
                 this.error = `Error fetching repositories: ${err.message}`;
                 console.error('Repository fetch error:', err);
                 
@@ -763,7 +770,7 @@ createApp({
         
         getSkillClass(skill) {
             const skillLower = skill.toLowerCase();
-
+            
             if (skillLower.includes('java') && !skillLower.includes('javascript')) {
                 return 'java';
             }
@@ -786,7 +793,7 @@ createApp({
             if (skillLower.includes('javascript')) {
                 return 'javascript';
             }
-
+            
             return '';
         }
     }
