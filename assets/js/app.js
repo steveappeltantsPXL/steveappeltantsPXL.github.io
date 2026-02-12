@@ -85,7 +85,7 @@ createApp({
             // ============================================
             config: {
                 name: 'Steve Appeltants',
-                title: 'Prof. Bachelor of Applied Computer Science - Software Management',
+                title: 'Professional Bachelor of Applied Computer Science in Software Management',
                 bio: 'Combining 15+ years of business leadership with modern software management and development' +
                     ' expertise. With deep empathy for healthcare technology, architecture of enterprise solutions and lead' +
                     ' multidisciplinary teams to transform research into real-world impact. Always with' +
@@ -220,7 +220,7 @@ createApp({
                 
                 education: [
                     {
-                        degree: 'Prof. Bachelor of Applied Computer Science',
+                        degree: 'Professional Bachelor of Applied Computer Science in Software Management',
                         specialization: 'Software Management and (partial) Application Development',
                         institution: 'University College PXL - Hasselt',
                         period: '2021 - 2026',
