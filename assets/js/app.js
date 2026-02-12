@@ -754,7 +754,7 @@ createApp({
                 'Vue': 'vue',
                 'React': 'react',
                 'JavaScript': 'javascript',
-                'TypeScript': 'javascript',
+                'TypeScript': 'typescript',
                 'HTML': 'html',
                 'CSS': 'css'
             };
@@ -763,7 +763,7 @@ createApp({
         
         getSkillClass(skill) {
             const skillLower = skill.toLowerCase();
-            
+
             if (skillLower.includes('java') && !skillLower.includes('javascript')) {
                 return 'java';
             }
@@ -779,6 +779,12 @@ createApp({
             }
             if (skillLower.includes('react')) {
                 return 'react';
+            }
+            if (skillLower.includes('typescript')) {
+                return 'typescript';
+            }
+            if (skillLower.includes('javascript')) {
+                return 'javascript';
             }
 
             return '';

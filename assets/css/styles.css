@@ -15,6 +15,7 @@
     
     /* Supporting Colors */
     --vue-green: #42b883;
+    --react-blue: #61dafb;
     --javascript-yellow: #f7df1e;
     
     /* Neutral Colors */
@@ -288,10 +289,27 @@ h2 {
     color: var(--white);
 }
 
-.skill-tag.vue,
-.skill-tag.react {
+.skill-tag.vue {
     background: rgba(66, 184, 131, 0.2);
-    border-color: var(--vue-green);
+    border-color: #35495e;
+    color: var(--white);
+}
+
+.skill-tag.react {
+    background: rgba(97, 218, 251, 0.2);
+    border-color: #20232a;
+    color: var(--white);
+}
+
+.skill-tag.javascript {
+    background: rgba(247, 223, 30, 0.2);
+    border-color: #f7df1e;
+    color: var(--white);
+}
+
+.skill-tag.typescript {
+    background: rgba(49, 120, 198, 0.2);
+    border-color: #3178c6;
     color: var(--white);
 }
 
@@ -544,10 +562,24 @@ h2 {
     border-color: var(--dotnet-purple);
 }
 
-.tech-badge.vue,
-.tech-badge.react {
+.tech-badge.vue {
     background: rgba(66, 184, 131, 0.25);
-    border-color: var(--vue-green);
+    border-color: #35495e;
+}
+
+.tech-badge.react {
+    background: rgba(97, 218, 251, 0.25);
+    border-color: #20232a;
+}
+
+.tech-badge.javascript {
+    background: rgba(247, 223, 30, 0.25);
+    border-color: #f7df1e;
+}
+
+.tech-badge.typescript {
+    background: rgba(49, 120, 198, 0.25);
+    border-color: #3178c6;
 }
 
 .project-meta {
@@ -1490,6 +1522,7 @@ footer {
 .language-dot.kotlin { background: var(--kotlin-purple); }
 .language-dot.java { background: var(--java-orange); }
 .language-dot.vue { background: var(--vue-green); }
+.language-dot.react { background: var(--react-blue); }
 .language-dot.javascript { background: var(--javascript-yellow); }
 .language-dot.typescript { background: #3178c6; }
 
