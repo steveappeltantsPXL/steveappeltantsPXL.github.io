@@ -141,15 +141,15 @@
     <section class="experience-section" id="experience">
         <div class="experience-container">
             <h2>Experience</h2>
-            <div v-for="exp in config.experience" :key="exp.title + exp.period" class="experience-card">
-                <div class="experience-header">
+            <div v-for="exp in config.experience" :key="exp.title + exp.period" class="experience-card card-base card-hover-medium">
+                <div class="experience-header card-header">
                     <div>
                         <h3>{{ exp.title }}</h3>
                         <p class="company">{{ exp.company }}</p>
                     </div>
                     <span class="experience-period">{{ exp.period }}</span>
                 </div>
-                <ul class="experience-highlights">
+                <ul class="experience-highlights card-highlights">
                     <li v-for="item in exp.highlights" :key="item">{{ item }}</li>
                 </ul>
             </div>
@@ -160,7 +160,7 @@
     <section class="education-section" id="education">
         <div class="education-container">
             <h2>Education</h2>
-            <div v-for="edu in config.education" :key="edu.degree" class="education-card">
+            <div v-for="edu in config.education" :key="edu.degree" class="education-card card-base card-hover-subtle">
                 <h3>{{ edu.degree }}</h3>
                 <p v-if="edu.specialization" class="specialization">{{ edu.specialization }}</p>
                 <p class="institution">{{ edu.institution }}</p>
@@ -177,8 +177,8 @@
         <div class="volunteering-container">
             <h2>Volunteering & Community Engagement</h2>
 
-            <div v-for="vol in config.volunteering" :key="vol.title + vol.period" class="volunteer-card">
-                <div class="volunteer-header">
+            <div v-for="vol in config.volunteering" :key="vol.title + vol.period" class="volunteer-card card-base card-hover-medium">
+                <div class="volunteer-header card-header">
                     <div>
                         <h3>{{ vol.title }}</h3>
                         <p class="organization">{{ vol.organization }}</p>
@@ -221,7 +221,7 @@
             <!-- Project 1: Octogrid ESB -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="project-card">
+                <div class="project-card card-base card-hover-strong card-interactive">
                     <h3>🏥 Octogrid - Enterprise Service Bus</h3>
                     <p>Leading healthcare interoperability project at Jessa Ziekenhuis. Implementing HL7/FHIR messaging for seamless medical data exchange.</p>
                     <div class="tech-stack">
@@ -240,7 +240,7 @@
             <!-- Project 2: Supermarket Automation Research -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="project-card">
+                <div class="project-card card-base card-hover-strong card-interactive">
                     <h3>🛒 Supermarket Automation Feasibility Study</h3>
                     <p>Comprehensive research project analyzing technical feasibility and market viability of automated supermarket systems.</p>
                     <div class="tech-stack">
@@ -258,7 +258,7 @@
             <!-- Project 3: Project Lingo -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="project-card">
+                <div class="project-card card-base card-hover-strong card-interactive">
                     <h3>💬 Project Lingo - Full-Stack Application</h3>
                     <p>Complete backend and frontend development using modern .NET technologies and web standards.</p>
                     <div class="tech-stack">

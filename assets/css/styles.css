@@ -314,9 +314,11 @@ h2 {
 }
 
 /* ============================================
-   Experience Section
+   Shared Card Components
    ============================================ */
-.experience-card {
+
+/* Base card styles - shared by all card types */
+.card-base {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -326,13 +328,30 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.experience-card:hover {
-    transform: translateY(-5px);
+.card-base:hover {
     box-shadow: var(--shadow-xl);
     background: rgba(255, 255, 255, 0.15);
 }
 
-.experience-header {
+/* Hover behavior modifiers */
+.card-hover-subtle:hover {
+    transform: translateY(-3px);
+}
+
+.card-hover-medium:hover {
+    transform: translateY(-5px);
+}
+
+.card-hover-strong:hover {
+    transform: translateY(-10px);
+}
+
+.card-interactive {
+    cursor: pointer;
+}
+
+/* Card header pattern - used by experience, volunteer, education */
+.card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -341,13 +360,47 @@ h2 {
     gap: 1rem;
 }
 
-.experience-header h3 {
+.card-header h3 {
     font-size: clamp(1.35rem, 3.5vw, 1.8rem);
     color: var(--accent-gold);
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
+/* Highlight list pattern - used by experience, volunteer, education */
+.card-highlights {
+    list-style: none;
+    padding-left: 0;
+}
+
+.card-highlights li {
+    padding-left: 1.75rem;
+    margin-bottom: 0.85rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.card-highlights li:before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   Experience Section
+   ============================================ */
+.experience-card {
+    /* All base styles inherited from .card-base and .card-hover-medium */
+}
+
+.experience-header {
+    /* Now inherits from .card-header */
+}
+
+/* Experience-specific styles */
 .company {
     font-size: 1.1rem;
     opacity: 0.9;
@@ -362,44 +415,17 @@ h2 {
 }
 
 .experience-highlights {
-    list-style: none;
-    padding-left: 0;
-}
-
-.experience-highlights li {
-    padding-left: 1.75rem;
-    margin-bottom: 0.85rem;
-    position: relative;
-    line-height: 1.6;
-}
-
-.experience-highlights li:before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--accent-gold);
-    font-weight: bold;
-    font-size: 1.1rem;
+    /* Now inherits from .card-highlights */
 }
 
 /* ============================================
    Education Section
    ============================================ */
 .education-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease;
+    /* All base styles inherited from .card-base and .card-hover-subtle */
 }
 
-.education-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-xl);
-}
-
+/* Education-specific styles */
 .education-card h3 {
     font-size: clamp(1.3rem, 3vw, 1.6rem);
     color: var(--accent-gold);
@@ -498,19 +524,12 @@ h2 {
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    /* All base styles inherited from .card-base, .card-hover-strong, .card-interactive */
 }
 
+/* Project-specific hover shadow override */
 .project-card:hover {
-    transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .project-card h3 {
@@ -898,37 +917,14 @@ h2 {
 }
 
 .volunteer-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.volunteer-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-    background: rgba(255, 255, 255, 0.15);
+    /* All base styles inherited from .card-base and .card-hover-medium */
 }
 
 .volunteer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
+    /* Now inherits from .card-header */
 }
 
-.volunteer-header h3 {
-    font-size: clamp(1.35rem, 3.5vw, 1.8rem);
-    color: var(--accent-gold);
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
+/* Volunteer-specific styles */
 .organization {
     font-size: 1.1rem;
     opacity: 0.9;
