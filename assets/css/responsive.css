@@ -1,0 +1,313 @@
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-8px);
+    }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 1024px) {
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        text-align: left;
+        padding-left: 80px;
+        padding-right: 0;
+    }
+
+    .timeline-dot {
+        left: 30px;
+    }
+
+    .tech-stack {
+        justify-content: flex-start !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .contact-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .manage-repos-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .add-repo {
+        flex-direction: column;
+    }
+
+    .repo-input {
+        width: 100%;
+    }
+
+    .manager-actions {
+        flex-direction: column;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 3rem 1rem;
+    }
+
+    .skill-category,
+    .experience-card,
+    .education-card,
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .scroll-nav {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+/* ============================================
+   Print Styles (for CV download)
+   ============================================ */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .scroll-indicator,
+    .scroll-nav,
+    .manage-repos-btn,
+    .repo-manager,
+    .github-link {
+        display: none;
+    }
+
+    section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================
+   Light Mode Variables
+   ============================================ */
+[data-theme="light"] {
+    --bg-primary: linear-gradient(135deg, #fef3c7 0%, #e0e7ff 100%);
+    --text-primary: #1f2937;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --white: #1f2937;
+    --gray-900: #f9fafb;
+}
+
+[data-theme="light"] body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .skill-category,
+[data-theme="light"] .experience-card,
+[data-theme="light"] .education-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .github-card,
+[data-theme="light"] .volunteer-card {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .contact-btn,
+[data-theme="light"] .scroll-top-btn,
+[data-theme="light"] .scroll-nav-btn,
+[data-theme="light"] .mobile-nav-toggle,
+[data-theme="light"] .theme-toggle {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .contact-btn:hover,
+[data-theme="light"] .scroll-top-btn:hover,
+[data-theme="light"] .scroll-nav-btn:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   Active Section Indicator
+   ============================================ */
+.scroll-nav-btn.active {
+    background: rgba(248, 152, 32, 0.4);
+    border-color: var(--java-orange);
+}
+
+/* ============================================
+   Improved Error States
+   ============================================ */
+.error-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 15px;
+    border: 2px solid var(--error);
+}
+
+.error-state h3 {
+    color: var(--error);
+    margin-bottom: 1rem;
+}
+
+.error-state pre {
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+/* ============================================
+   Mobile Responsive Improvements
+   ============================================ */
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: flex;
+    }
+
+    .scroll-nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 280px;
+        transition: right 0.3s ease;
+        padding-top: 4rem;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .scroll-nav-menu.mobile-open {
+        right: 0;
+    }
+
+    .theme-toggle {
+        bottom: 7rem;
+        right: 1rem;
+    }
+
+    .notification {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+        min-width: auto;
+    }
+}
+
+/* ============================================
+   Accessibility Improvements
+   ============================================ */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--java-orange);
+    color: var(--white);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    transition: top 0.3s ease;
+    z-index: 10000;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Focus visible styles */
+*:focus-visible {
+    outline: 2px solid var(--java-orange);
+    outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   Print Optimizations
+   ============================================ */
+@media print {
+    .scroll-nav,
+    .mobile-nav-toggle,
+    .theme-toggle,
+    .notification,
+    .manage-repos-btn,
+    .repo-manager {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .github-card,
+    .experience-card,
+    .education-card {
+        page-break-inside: avoid;
+    }
+}

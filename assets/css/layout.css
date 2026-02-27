@@ -1,0 +1,180 @@
+/* ============================================
+   Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--gradient-primary);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+    letter-spacing: -0.02em;
+}
+
+.hero-title {
+    font-size: clamp(1.2rem, 4vw, 1.75rem);
+    font-weight: 600;
+    opacity: 0.95;
+    animation: fadeInUp 1s ease 0.2s backwards;
+    margin-bottom: 1.5rem;
+}
+
+.hero-bio {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    max-width: 800px;
+    line-height: 1.7;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease 0.4s backwards;
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   Contact Buttons
+   ============================================ */
+.contact-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeInUp 1s ease 0.6s backwards;
+}
+
+.contact-btn {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-btn .icon {
+    font-size: 1.2rem;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   Section Styling
+   ============================================ */
+section {
+    min-height: auto;
+    padding: 4rem 2rem;
+}
+
+.skills-overview {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.experience-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.education-section {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.timeline-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.soft-skills-section {
+    background: rgba(127, 82, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.technical-skills-section {
+    background: rgba(248, 152, 32, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.github-section {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.languages-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 3rem 2rem;
+}
+
+/* ============================================
+   Container Styles
+   ============================================ */
+.skills-container,
+.experience-container,
+.education-container,
+.volunteering-container,
+.timeline,
+.github-container,
+.languages-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}

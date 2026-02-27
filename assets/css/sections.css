@@ -1,0 +1,568 @@
+/* ============================================
+   Skills Section
+   ============================================ */
+.skill-category {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.skill-category h3 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    color: var(--accent-gold);
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skill-tag {
+    background: rgba(255, 215, 0, 0.2);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Tech-specific skill tag colors */
+.skill-tag.java {
+    background: rgba(248, 152, 32, 0.2);
+    border-color: var(--java-orange);
+    color: var(--white);
+}
+
+.skill-tag.kotlin {
+    background: rgba(127, 82, 255, 0.2);
+    border-color: var(--kotlin-purple);
+    color: var(--white);
+}
+
+.skill-tag.dotnet {
+    background: rgba(81, 43, 212, 0.2);
+    border-color: var(--dotnet-purple);
+    color: var(--white);
+}
+
+.skill-tag.vue {
+    background: rgba(66, 184, 131, 0.2);
+    border-color: #35495e;
+    color: var(--white);
+}
+
+.skill-tag.react {
+    background: rgba(97, 218, 251, 0.2);
+    border-color: #20232a;
+    color: var(--white);
+}
+
+.skill-tag.javascript {
+    background: rgba(247, 223, 30, 0.2);
+    border-color: #f7df1e;
+    color: var(--white);
+}
+
+.skill-tag.typescript {
+    background: rgba(49, 120, 198, 0.2);
+    border-color: #3178c6;
+    color: var(--white);
+}
+
+/* ============================================
+   Experience Section
+   ============================================ */
+.experience-card {
+    /* All base styles inherited from .card-base and .card-hover-medium */
+}
+
+.experience-header {
+    /* Now inherits from .card-header */
+}
+
+/* Experience-specific styles */
+.company {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.experience-period {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.experience-highlights {
+    /* Now inherits from .card-highlights */
+}
+
+/* ============================================
+   Education Section
+   ============================================ */
+.education-card {
+    /* All base styles inherited from .card-base and .card-hover-subtle */
+}
+
+/* Education-specific styles */
+.education-card h3 {
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.specialization {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.institution {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    margin-bottom: 0.35rem;
+    font-weight: 500;
+}
+
+.achievements {
+    list-style: none;
+    margin-top: 1rem;
+    padding-left: 0;
+}
+
+.achievements li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    opacity: 0.9;
+}
+
+.achievements li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: bold;
+}
+
+/* ============================================
+   Timeline Section
+   ============================================ */
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: calc(100% - 4rem);
+    background: rgba(255, 255, 255, 0.3);
+    top: 4rem;
+}
+
+.timeline-item {
+    margin-bottom: 4rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) {
+    text-align: right;
+    padding-right: 52%;
+}
+
+.timeline-item:nth-child(even) {
+    text-align: left;
+    padding-left: 52%;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background: var(--white);
+    border-radius: 50%;
+    border: 4px solid var(--java-orange);
+    z-index: 10;
+    box-shadow: 0 0 0 4px rgba(248, 152, 32, 0.2);
+}
+
+.project-card {
+    /* All base styles inherited from .card-base, .card-hover-strong, .card-interactive */
+}
+
+/* Project-specific hover shadow override */
+.project-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h3 {
+    font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 0.6rem;
+    margin: 1.25rem 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.timeline-item:nth-child(even) .tech-stack {
+    justify-content: flex-start;
+}
+
+.tech-badge {
+    background: rgba(255, 215, 0, 0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+    transform: scale(1.05);
+}
+
+/* Language-specific tech badges */
+.tech-badge.java {
+    background: rgba(248, 152, 32, 0.25);
+    border-color: var(--java-orange);
+}
+
+.tech-badge.kotlin {
+    background: rgba(127, 82, 255, 0.25);
+    border-color: var(--kotlin-purple);
+}
+
+.tech-badge.dotnet {
+    background: rgba(81, 43, 212, 0.25);
+    border-color: var(--dotnet-purple);
+}
+
+.tech-badge.vue {
+    background: rgba(66, 184, 131, 0.25);
+    border-color: #35495e;
+}
+
+.tech-badge.react {
+    background: rgba(97, 218, 251, 0.25);
+    border-color: #20232a;
+}
+
+.tech-badge.javascript {
+    background: rgba(247, 223, 30, 0.25);
+    border-color: #f7df1e;
+}
+
+.tech-badge.typescript {
+    background: rgba(49, 120, 198, 0.25);
+    border-color: #3178c6;
+}
+
+.project-meta {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   Languages Section
+   ============================================ */
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.language-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.language-item:hover {
+    transform: translateY(-3px);
+}
+
+.language-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.language-level {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* ============================================
+   Volunteering Section
+   ============================================ */
+.volunteering-section {
+    background: rgba(0, 120, 212, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 4rem 2rem;
+}
+
+.volunteer-card {
+    /* All base styles inherited from .card-base and .card-hover-medium */
+}
+
+.volunteer-header {
+    /* Now inherits from .card-header */
+}
+
+/* Volunteer-specific styles */
+.organization {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.volunteer-website {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.volunteer-website a {
+    display: inline-block;
+    color: #ffffff;
+    background: #0078D4;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 120, 212, 0.3);
+}
+
+.volunteer-website a:hover {
+    background: #005a9e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 120, 212, 0.4);
+}
+
+.volunteer-period {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.volunteer-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 120, 212, 0.1);
+    border-left: 3px solid #0078D4;
+    border-radius: 5px;
+}
+
+.volunteer-highlights {
+    list-style: none;
+    padding-left: 0;
+}
+
+.volunteer-highlights li {
+    padding-left: 1.75rem;
+    margin-bottom: 0.85rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.volunteer-highlights li:before {
+    content: '♦';
+    position: absolute;
+    left: 0;
+    color: #0078D4;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Code for Belgium Projects Subsection */
+.volunteer-projects {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.volunteer-projects h4 {
+    font-size: 1.2rem;
+    color: #0078D4;
+    margin-bottom: 1rem;
+}
+
+.project-item {
+    background: rgba(0, 120, 212, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #0078D4;
+    line-height: 1.6;
+}
+
+.project-item strong {
+    color: #0078D4;
+}
+
+.project-website {
+    margin-top: 0.75rem;
+}
+
+.project-website a {
+    display: inline-block;
+    color: #ffffff;
+    background: #0078D4;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 120, 212, 0.3);
+}
+
+.project-website a:hover {
+    background: #005a9e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 120, 212, 0.4);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+footer {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-meta {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-meta a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-meta a:hover {
+    opacity: 0.8;
+}
+
+/* ============================================
+   Enhanced Repository Cards
+   ============================================ */
+.github-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.github-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.github-card:hover::before {
+    transform: scaleX(1);
+}
+
+.repo-language {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.language-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.language-dot.kotlin { background: var(--kotlin-purple); }
+.language-dot.java { background: var(--java-orange); }
+.language-dot.vue { background: var(--vue-green); }
+.language-dot.react { background: var(--react-blue); }
+.language-dot.javascript { background: var(--javascript-yellow); }
+.language-dot.typescript { background: #3178c6; }
+
+.repo-cache-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-left: auto;
+}

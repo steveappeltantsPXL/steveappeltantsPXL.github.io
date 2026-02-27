@@ -1,0 +1,42 @@
+/* ============================================
+   CSS Variables - Color Scheme
+   ============================================ */
+:root {
+    /* Primary: Java/Kotlin Gradient */
+    --java-orange: #f89820;
+    --kotlin-purple: #7F52FF;
+    --gradient-primary: linear-gradient(135deg, #f89820 0%, #7F52FF 100%);
+
+    /* Secondary: .NET/C# */
+    --dotnet-purple: #512BD4;
+    --azure-blue: #0078D4;
+
+    /* Supporting Colors */
+    --vue-green: #42b883;
+    --react-blue: #61dafb;
+    --javascript-yellow: #f7df1e;
+
+    /* Neutral Colors */
+    --white: #ffffff;
+    --black: #000000;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+
+    /* Accent Colors */
+    --accent-gold: #ffd700;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
