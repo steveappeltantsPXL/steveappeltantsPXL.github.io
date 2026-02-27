@@ -1,4 +1,4 @@
-import { githubService, fetchRepositories, retryFetchRepositories,
+import { fetchRepositories, retryFetchRepositories,
          extractGitHubUsername, loadContent, updateMetaTags } from './github-service.js';
 import { toggleRepoManager, addRepository, removeRepository,
          saveRepositories, cancelRepoChanges } from './repo-manager.js';
