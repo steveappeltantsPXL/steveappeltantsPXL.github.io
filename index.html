@@ -67,9 +67,10 @@
     
     <!-- External Stylesheets -->
     <link rel="stylesheet" href="/assets/css/styles.css">
-    
-    <!-- Vue.js -->
+
+    <!-- Vue.js (global build — accessed as window.Vue by app.js module) -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
+
 </head>
 <body>
 <!-- Skip to Content (Accessibility) -->
@@ -515,7 +516,7 @@
 </div>
 
 <!-- External JavaScript -->
-<script src="/assets/js/app.js"></script>
+<script type="module" src="/assets/js/app.js"></script>
 
 <!-- Keyboard Shortcuts Help (Hidden, for screen readers) -->
 <div class="sr-only" aria-live="polite" role="status">
