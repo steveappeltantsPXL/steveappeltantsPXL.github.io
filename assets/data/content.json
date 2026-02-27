@@ -1,0 +1,177 @@
+{
+  "skills": [
+    {
+      "category": "Leadership & Strategy",
+      "items": ["Team Leadership", "Strategic Planning", "Coaching & Mentoring", "Change Management"]
+    },
+    {
+      "category": "Communication",
+      "items": ["Stakeholder Engagement", "Cross-Functional Collaboration", "Technical Communication"]
+    },
+    {
+      "category": "Project & Operations",
+      "items": ["Project Management", "Resource Allocation", "Process Optimization", "Quality Assurance"]
+    },
+    {
+      "category": "Innovation",
+      "items": ["Entrepreneurial Mindset", "Innovation-Driven Approach", "Continuous Improvement"]
+    },
+    {
+      "category": "Software Management (Primary Role)",
+      "items": ["Strategic Planning", "Stakeholder Management", "Risk Management", "Change Management", "Agile/Scrum", "Quality Assurance", "Budget Management"]
+    },
+    {
+      "category": "Java Stack (Primary Tech)",
+      "items": ["Java Essentials", "Java Advanced", "Spring Boot", "Hibernate", "Maven/Gradle", "JUnit", "Microservices"]
+    },
+    {
+      "category": "Kotlin & Multiplatform",
+      "items": ["Kotlin", "Kotlin Multiplatform", "Compose Multiplatform", "Coroutines"]
+    },
+    {
+      "category": ".NET Stack (Secondary Tech)",
+      "items": ["C# Essentials", "C# Advanced", "ASP.NET Core 8.0", "Entity Framework", "Blazor", ".NET MVC/API"]
+    },
+    {
+      "category": "Frontend & Web",
+      "items": ["Vue.js", "React", "JavaScript", "TypeScript", "HTML/CSS", "Responsive Design"]
+    },
+    {
+      "category": "Healthcare & Specializations",
+      "items": ["HL7 - FHIR", "Healthcare Interoperability", "Enterprise Service Bus", "Medical Data Systems"]
+    },
+    {
+      "category": "DevOps & Tools",
+      "items": ["Git - SVN", "CI/CD", "Docker", "PostgreSQL", "Test Automation", "UX Design"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Blueprint & Operations Manager Pilot Cases (Internship)",
+      "company": "PXL Research - Smart ICT Department",
+      "period": "2025 - 2026",
+      "highlights": [
+        "Blueprint and Operational Manager for CIVIC Tech pilot cases using Agile/Scrum methodology (Scrum Master role)",
+        "Designed and implemented architectural blueprint for research project scalability",
+        "Developed CMS (Content Management System) dashboard for knowledge management and project tracking",
+        "Coordinated cross-functional teams to deliver research outcomes and ensure stakeholder alignment",
+        "Contributed to Smart ICT research initiatives focused on civic technology solutions"
+      ]
+    },
+    {
+      "title": "Enterprise Service Bus (IT Project)",
+      "company": "Jessa Hospital - ICT Department",
+      "period": "2025 - 2026",
+      "highlights": [
+        "Leading Octogrid Enterprise Service Bus (ESB) project - Agent/Orchestrator development",
+        "Implementing HL7/FHIR healthcare interoperability solutions",
+        "Full-stack development with Kotlin and Vue.js",
+        "Managing stakeholder requirements and project delivery"
+      ]
+    },
+    {
+      "title": "Entrepreneurship Project",
+      "company": "University College PXL",
+      "period": "2024 - 2025",
+      "highlights": [
+        "Founded Visear startup concept for real-time sign language translation using AI/ML technology",
+        "Developed business model targeting accessibility for the deaf community in Belgium and the Netherlands",
+        "Designed cross-platform architecture with AI-powered bidirectional translation (speech-to-sign and sign-to-speech)",
+        "Created comprehensive development roadmap and investor presentations demonstrating market viability",
+        "Established strategic partnerships with PXL-Research, Cegeka and cloud service providers",
+        "Pitched subscription-based SaaS model with a scalable pricing strategy for European market expansion"
+      ]
+    },
+    {
+      "title": "Research Project (Software Management)",
+      "company": "University College PXL",
+      "period": "2022 - 2023",
+      "highlights": [
+        "Conducted feasibility research for supermarket automation systems",
+        "Analyzed technical requirements and market viability",
+        "Delivered comprehensive research documentation"
+      ]
+    },
+    {
+      "title": "Research Project (Application Development)",
+      "company": "University College PXL",
+      "period": "2021 - 2022",
+      "highlights": [
+        "Developed Project Lingo backend and frontend",
+        "Built full-stack solutions with .NET, JavaScript, HTML/CSS",
+        "Applied clean architecture principles"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Professional Bachelor of Applied Computer Science in Software Management",
+      "specialization": "Software Management and (partial) Application Development",
+      "institution": "University College PXL - Hasselt",
+      "period": "2021 - 2026",
+      "achievements": [
+        "Software Architecture & Enterprise Solutions",
+        "Software Analysis & Design",
+        "Java & .NET Expert Developer tracks",
+        "ITIL Service Management & DevOps"
+      ]
+    },
+    {
+      "degree": "Electronics & Measurement/Control Technology",
+      "institution": "Technicum (Hasp-O-Centrum) - Sint-Truiden",
+      "period": "1987 - 1993 & 1994",
+      "achievements": ["Graduated with distinction (75%)"]
+    }
+  ],
+  "languages": [
+    {"language": "Dutch", "level": "Native"},
+    {"language": "English", "level": "Professional"}
+  ],
+  "volunteering": [
+    {
+      "title": "Student Commission Member",
+      "organization": "Hogeschool PXL - Applied Informatics",
+      "period": "2021 - 2024",
+      "description": "The Student Commission is a formal body established at the program level, giving students a voice within their own education.",
+      "highlights": [
+        "Represented student interests in program-level decision-making",
+        "Provided feedback on educational profile, curriculum, and exam schedules",
+        "Participated in improving student support services and communication"
+      ]
+    },
+    {
+      "title": "Code for Belgium Volunteer",
+      "organization": "Code for Belgium",
+      "period": "2025 - Present",
+      "website": "https://codeforbelgium.org/projects/",
+      "description": "Contributing to civic technology projects that improve government services and citizen engagement.",
+      "highlights": [
+        "Participate in civic tech hackathons and collaborative projects",
+        "Developed open-source solutions for public sector challenges",
+        "Collaborated with government agencies and civic organizations"
+      ],
+      "projects": [
+        {
+          "name": "Naar school in Vlaanderen",
+          "description": "A project focused on providing accessible information about school transportation options in Flanders, helping parents and students make informed decisions about their commute to school.",
+          "website": "https://naarschoolinvlaanderen.be/"
+        },
+        {
+          "name": "Sint-Vincentius Kuringen",
+          "description": "A project aimed at supporting the operations of the Sint-Vincentius Kuringen, enhancing their digital infrastructure and improving patient care through technology solutions.",
+          "website": "https://vincentiuskuringen.be/"
+        },
+        {
+          "name": "Help+",
+          "description": "A project designed to help individuals in need by connecting them with resources and support services, leveraging technology to facilitate access to help and improve community welfare.",
+          "website": "https://www.helpplus.be/"
+        },
+        {
+          "name": "Zorghuis Limburg en Zorghuis Oostende",
+          "description": "A project focused on supporting the booking operations of Zorghuis Limburg and Zorghuis Oostende, two organizations providing care and support for individuals with chronic illnesses, enhancing their digital infrastructure and improving patient care through technology solutions.",
+          "website": "./under-construction.html"
+        }
+      ]
+    }
+  ]
+}
