@@ -37,8 +37,8 @@
       "items": ["Vue.js", "React", "JavaScript", "TypeScript", "HTML/CSS", "Responsive Design"]
     },
     {
-      "category": "Healthcare & Specializations",
-      "items": ["HL7 - FHIR", "Healthcare Interoperability", "Enterprise Service Bus", "Medical Data Systems"]
+      "category": "Computer Vision & Accessibility",
+      "items": ["C++20", "ONNX Runtime", "OpenCV", "ML Inference", "Accessibility Technology", "Sign Language Recognition", "Real-Time Systems"]
     },
     {
       "category": "DevOps & Tools",
@@ -169,7 +169,7 @@
         {
           "name": "Zorghuis Limburg en Zorghuis Oostende",
           "description": "A project focused on supporting the booking operations of Zorghuis Limburg and Zorghuis Oostende, two organizations providing care and support for individuals with chronic illnesses, enhancing their digital infrastructure and improving patient care through technology solutions.",
-          "website": "./under-construction.html"
+          "website": "https://zorghuis-harmony.lovable.app/"
         }
       ]
     }

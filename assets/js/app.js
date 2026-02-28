@@ -47,7 +47,7 @@ createApp({
                 
                 // Managed by CI (token placeholder) and repo manager UI
                 githubToken: '__GITHUB_TOKEN_PLACEHOLDER__',
-                featuredRepos: ['WebSLT', 'WebSLT-Frontend'],
+                featuredRepos: ['ASL-Translator', 'WebSLT', 'WebSLT-Frontend'],
                 
                 // Content — loaded via fetch from assets/data/content.json
                 skills: [],
