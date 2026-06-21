@@ -1,546 +1,434 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-          content="Steve Appeltants - Software Manager and Prof. Bachelor Applied Computer Science specializing in healthcare technology, Java/Kotlin development, and enterprise architecture.">
-    <meta name="keywords"
-          content="Software Manager, Java Developer, Kotlin, Healthcare Tech, HL7/FHIR, Enterprise Service Bus, .NET Developer, Bachelor Applied Computer Science">
-    <meta name="author" content="Steve Appeltants">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://steveappeltantspxl.github.io/">
-    <meta property="og:title" content="Steve Appeltants - Software Manager Portfolio">
-    <meta property="og:description" content="Software Manager specializing in healthcare technology and enterprise solutions. Java, Kotlin, and .NET expertise.">
-    <meta property="og:image" content="https://steveappeltantspxl.github.io/assets/images/og-image.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://steveappeltantspxl.github.io/">
-    <meta property="twitter:title" content="Steve Appeltants - Software Manager Portfolio">
-    <meta property="twitter:description" content="Software Manager specializing in healthcare technology and enterprise solutions.">
-    <meta property="twitter:image" content="https://steveappeltantspxl.github.io/assets/images/og-image.png">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://steveappeltantspxl.github.io/">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-    
-    <!-- Preconnect to external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://api.github.com">
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Steve Appeltants",
-            "jobTitle": "Software Manager",
-            "url": "https://steveappeltantspxl.github.io/",
-            "sameAs": [
-                "https://www.linkedin.com/in/steve-appeltants/",
-                "https://github.com/steveappeltantsPXL"
-            ],
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Sint-Truiden",
-                "addressCountry": "BE"
-            },
-            "email": "steve.appeltants@outlook.com",
-            "telephone": "+32-470-31-01-81",
-            "alumniOf": {
-                "@type": "EducationalOrganization",
-                "name": "University College PXL"
-            },
-            "knowsAbout": ["Software Management", "Java", "Kotlin", "Healthcare Technology", "HL7/FHIR", ".NET Development"]
-        }
-    </script>
-    
-    <title>Steve Appeltants - Software Manager Portfolio</title>
-    
-    <!-- External Stylesheets -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
-
-    <!-- Vue.js (global build — accessed as window.Vue by app.js module) -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steve Appeltants — Software Manager</title>
+  <meta name="description" content="Steve Appeltants — Software Manager with 17+ years leading teams. Building hospital interoperability, AI agents and on-device ML. Java, Kotlin, .NET, HL7/FHIR." />
+  <meta name="author" content="Steve Appeltants" />
+  <meta property="og:title" content="Steve Appeltants — Software Manager" />
+  <meta property="og:description" content="17+ years leading teams. Building hospital interoperability, AI agents and on-device ML." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://steveappeltantspxl.github.io/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-<!-- Skip to Content (Accessibility) -->
-<a href="#main-content" class="skip-to-content">Skip to main content</a>
+  <div id="progress"></div>
 
-<div id="app">
-    <!-- Hero Section -->
-    <header class="hero" id="main-content">
-        <h1>{{ config.name }}</h1>
-        <p class="hero-title">{{ config.title }}</p>
-        <p class="hero-bio">{{ config.bio }}</p>
-        
-        <div class="contact-buttons">
-            <a v-if="config.github" :href="config.github" target="_blank" rel="noopener noreferrer" class="contact-btn">
-                <span class="icon">💻</span> GitHub Profile
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><span class="dot"></span>Steve&nbsp;Appeltants</a>
+      <nav class="nav-links">
+        <a href="#work" data-sec="work" class="num" data-n="01">Work</a>
+        <a href="#experience" data-sec="experience" class="num" data-n="02">Experience</a>
+        <a href="#capabilities" data-sec="capabilities" class="num" data-n="03">Stack</a>
+        <a href="#approach" data-sec="approach" class="num" data-n="04">Approach</a>
+        <a href="#community" data-sec="community" class="num" data-n="05">Community</a>
+        <a href="#about" data-sec="about" class="num" data-n="06">About</a>
+        <a href="#contact" data-sec="contact" class="cta">Contact →</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
+        <span id="theme-label">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-top">
+          <span class="meta">Software Manager · Applied Computer Science</span>
+          <span class="meta">Belgium · 50°51′N</span>
+        </div>
+        <h1>Steve<span class="l2">Appel<em>tants</em></span></h1>
+
+        <div class="hero-sub">
+          <div>
+            <div class="hero-role">Software Manager · 17+ years leading teams</div>
+            <p class="hero-bio">Building <b>hospital interoperability</b>, <b>AI agents</b> and <b>on-device ML</b>. I pair two decades of business leadership with modern software management — turning research into systems that hold up in the real world, with sustainability and innovation at the core.</p>
+            <div class="hero-links">
+              <a class="btn primary" href="#work">View selected work
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn" href="https://github.com/steveappeltantsPXL" target="_blank" rel="noopener">GitHub
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+              </a>
+              <a class="btn" href="https://www.linkedin.com/in/steve-appeltants/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+          <div class="status" aria-label="Current status">
+            <div class="row"><span class="k">Status</span><span class="v live"><span class="pulse"></span>Open to opportunities</span></div>
+            <div class="row"><span class="k">Focus</span><span class="v">Agentic AI Architecture · Enabling Teams</span></div>
+            <div class="row"><span class="k">Now</span><span class="v">PXL Research · PXL Smart ICT</span></div>
+            <div class="row"><span class="k">Core</span><span class="v">Java · Kotlin · .NET · C++</span></div>
+            <div class="row"><span class="k">Lang</span><span class="v">NL · EN · FR · DE</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 WORK ============ -->
+    <section id="work">
+      <div class="wrap sec">
+        <div class="sec-head">
+          <span class="mono"><span class="idx">01</span> / Selected Work</span>
+          <div class="label">Things I've built &amp; led</div>
+          <div class="note">Healthcare systems, civic tech, and accessibility — research turned into working software.</div>
+        </div>
+        <div class="sec-body">
+          <div class="work-list">
+
+            <a class="proj reveal" href="https://staging.digitaalzorgkompas.pxlsmartict.eu/" target="_blank" rel="noopener">
+              <span class="pnum">01</span>
+              <div>
+                <span class="ptag">Civic Tech · Scrum Master · 2025—2026</span>
+                <div class="ptitle">Digitaal Zorgkompas — Civic-Tech Blueprint</div>
+                <p class="pdesc">A digital care platform for people with fibromyalgia, CFS and FNS at PXL Smart ICT. As Scrum Master I designed a reusable, AI-assisted project blueprint — GitHub Actions CI/CD and open-source governance — so civic-tech initiatives become sustainable and repeatable instead of restarting from zero.</p>
+                <div class="stack">
+                  <span class="chip">Scrum</span><span class="chip">GitHub Actions</span><span class="chip">CI / CD</span><span class="chip">OSS Governance</span><span class="chip">CMS Dashboard</span>
+                </div>
+              </div>
+              <div class="proj-right">
+                <span class="arrow" aria-hidden="true">↗</span>
+                <span>PXL Smart ICT</span>
+              </div>
             </a>
-            <a v-if="config.linkedin" :href="config.linkedin" target="_blank" rel="noopener noreferrer" class="contact-btn">
-                <span class="icon">💼</span> LinkedIn
+
+            <a class="proj reveal" href="#experience">
+              <span class="pnum">02</span>
+              <div>
+                <span class="ptag">Healthcare Interoperability · 2025—2026</span>
+                <div class="ptitle">Octogrid — Enterprise Service Bus</div>
+                <p class="pdesc">Leading the Octogrid ESB at Jessa Hospital — agent/orchestrator development carrying HL7/FHIR messages so clinical systems exchange medical data safely and seamlessly. Full-stack in Kotlin and Vue.js.</p>
+                <div class="stack">
+                  <span class="chip">Kotlin</span><span class="chip">Vue.js</span><span class="chip">HL7 / FHIR</span><span class="chip">ESB</span><span class="chip">Agent / Orchestrator</span>
+                </div>
+              </div>
+              <div class="proj-right">
+                <span class="arrow" aria-hidden="true">↗</span>
+                <span>Jessa Hospital</span>
+              </div>
             </a>
-            <a v-if="config.email" :href="`mailto:${config.email}`" class="contact-btn">
-                <span class="icon">✉️</span> Contact Me
+
+            <a class="proj reveal" href="https://github.com/steveappeltantsPXL" target="_blank" rel="noopener">
+              <span class="pnum">03</span>
+              <div>
+                <span class="ptag">Computer Vision · On-device ML · 2024—Present</span>
+                <div class="ptitle">Visear / ASL-Translator</div>
+                <p class="pdesc">A startup concept and desktop build for real-time sign-language translation. Computer vision and on-device ML inference recognise signs and translate them to text — bidirectional accessibility for the deaf and hard-of-hearing community.</p>
+                <div class="stack">
+                  <span class="chip">C++20</span><span class="chip">ONNX Runtime</span><span class="chip">OpenCV</span><span class="chip">Dear ImGui</span><span class="chip">CMake</span>
+                </div>
+              </div>
+              <div class="proj-right">
+                <span class="arrow" aria-hidden="true">↗</span>
+                <span>Active</span>
+              </div>
             </a>
-        </div>
-        
-        <div class="scroll-indicator" 
-             @click="scrollToSection('soft-skills')" 
-             aria-label="Scroll down"
-             tabindex="0"
-             @keyup.enter="scrollToSection('soft-skills')">
-            ↓ Discover my journey
-        </div>
-    </header>
-    
-    <!-- Soft Skills Section -->
-    <section class="skills-overview soft-skills-section" id="soft-skills">
-        <div class="skills-container">
-            <h2>Soft Skills & Leadership</h2>
-            <div v-for="category in softSkills" :key="category.category" class="skill-category">
-                <h3>{{ category.category }}</h3>
-                <div class="skill-tags">
-                    <span v-for="skill in category.items" :key="skill"
-                          class="skill-tag"
-                          :class="getSkillClass(skill)">
-                        {{ skill }}
-                    </span>
+
+            <a class="proj reveal" href="https://github.com/steveappeltantsPXL" target="_blank" rel="noopener">
+              <span class="pnum">04</span>
+              <div>
+                <span class="ptag">Full-Stack · 2021—2022</span>
+                <div class="ptitle">Project Lingo</div>
+                <p class="pdesc">A complete full-stack application — backend and frontend built with modern .NET technologies and clean architecture principles.</p>
+                <div class="stack">
+                  <span class="chip">.NET</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span>
                 </div>
-            </div>
+              </div>
+              <div class="proj-right">
+                <span class="arrow" aria-hidden="true">↗</span>
+                <span>PXL</span>
+              </div>
+            </a>
+
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Technical Skills Section -->
-    <section class="skills-overview technical-skills-section" id="technical-skills">
-        <div class="skills-container">
-            <h2>Technical Skills & Expertise</h2>
-            <div v-for="category in technicalSkills" :key="category.category" class="skill-category">
-                <h3>{{ category.category }}</h3>
-                <div class="skill-tags">
-                    <span v-for="skill in category.items" :key="skill"
-                          class="skill-tag"
-                          :class="getSkillClass(skill)">
-                        {{ skill }}
-                    </span>
-                </div>
-            </div>
+    <!-- ============ 02 EXPERIENCE ============ -->
+    <section id="experience">
+      <div class="wrap sec">
+        <div class="sec-head">
+          <span class="mono"><span class="idx">02</span> / Experience</span>
+          <div class="label">Where I've worked</div>
+          <div class="note">Leading and building software in clinical, civic and enterprise settings.</div>
         </div>
+        <div class="sec-body">
+          <div class="tl">
+
+            <div class="tl-item reveal">
+              <div class="tl-when">2025 — 2026</div>
+              <div>
+                <div class="tl-role">Blueprint &amp; Operations Manager — Pilot Cases <span style="color:var(--muted);font-weight:400;">(Internship)</span></div>
+                <div class="tl-org">PXL Research · PXL Smart ICT · Scrum Master</div>
+                <div class="tl-body">
+                  <ul>
+                    <li>Blueprint and operational manager for Civic Tech pilot cases using Agile/Scrum.</li>
+                    <li>Designed an architectural blueprint for research-project scalability and repeatability.</li>
+                    <li>Built a CMS dashboard for knowledge management and project tracking.</li>
+                    <li>Coordinated cross-functional teams and kept stakeholders aligned on outcomes.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="tl-item reveal">
+              <div class="tl-when">2025 — 2026</div>
+              <div>
+                <div class="tl-role">Enterprise Service Bus <span style="color:var(--muted);font-weight:400;">(IT Project)</span></div>
+                <div class="tl-org">Jessa Hospital — Department Digital</div>
+                <div class="tl-body">
+                  <ul>
+                    <li>Leading the Octogrid ESB — agent/orchestrator development.</li>
+                    <li>Implementing HL7/FHIR healthcare-interoperability solutions.</li>
+                    <li>Full-stack development with Kotlin and Vue.js.</li>
+                    <li>Managing stakeholder requirements and delivery.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="tl-item reveal">
+              <div class="tl-when">2024 — 2025</div>
+              <div>
+                <div class="tl-role">Entrepreneurship Project</div>
+                <div class="tl-org">University College PXL</div>
+                <div class="tl-body">
+                  <ul>
+                    <li>Founded the Visear concept — real-time sign-language translation using AI/ML.</li>
+                    <li>Designed cross-platform, AI-powered bidirectional translation (speech-to-sign &amp; sign-to-speech).</li>
+                    <li>Built the business model and investor presentations; pitched a scalable SaaS for the European market.</li>
+                    <li>Established partnerships with PXL-Research, Cegeka and cloud providers.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="tl-item reveal">
+              <div class="tl-when">2022 — 2023</div>
+              <div>
+                <div class="tl-role">Research Project — Software Management</div>
+                <div class="tl-org">University College PXL</div>
+                <div class="tl-body">
+                  <ul>
+                    <li>Feasibility research for supermarket-automation systems.</li>
+                    <li>Analysed technical requirements and market viability; delivered full documentation.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="tl-item reveal">
+              <div class="tl-when">2021 — 2022</div>
+              <div>
+                <div class="tl-role">Research Project — Application Development</div>
+                <div class="tl-org">University College PXL</div>
+                <div class="tl-body">
+                  <ul>
+                    <li>Developed Project Lingo, backend and frontend, with .NET, JavaScript, HTML/CSS.</li>
+                    <li>Applied clean-architecture principles throughout.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </section>
-    
-    <!-- Experience Section -->
-    <section class="experience-section" id="experience">
-        <div class="experience-container">
-            <h2>Experience</h2>
-            <div v-for="exp in config.experience" :key="exp.title + exp.period" class="experience-card card-base card-hover-medium">
-                <div class="experience-header card-header">
-                    <div>
-                        <h3>{{ exp.title }}</h3>
-                        <p class="company">{{ exp.company }}</p>
-                    </div>
-                    <span class="experience-period">{{ exp.period }}</span>
-                </div>
-                <ul class="experience-highlights card-highlights">
-                    <li v-for="item in exp.highlights" :key="item">{{ item }}</li>
-                </ul>
-            </div>
+
+    <!-- ============ 03 STACK ============ -->
+    <section id="capabilities">
+      <div class="wrap sec">
+        <div class="sec-head">
+          <span class="mono"><span class="idx">03</span> / Stack</span>
+          <div class="label">Technical capabilities</div>
+          <div class="note">Leadership and engineering, grouped by where they fit.</div>
         </div>
-    </section>
-    
-    <!-- Education Section -->
-    <section class="education-section" id="education">
-        <div class="education-container">
-            <h2>Education</h2>
-            <div v-for="edu in config.education" :key="edu.degree" class="education-card card-base card-hover-subtle">
-                <h3>{{ edu.degree }}</h3>
-                <p v-if="edu.specialization" class="specialization">{{ edu.specialization }}</p>
-                <p class="institution">{{ edu.institution }}</p>
-                <p class="experience-period">{{ edu.period }}</p>
-                <ul v-if="edu.achievements" class="achievements">
-                    <li v-for="achievement in edu.achievements" :key="achievement">{{ achievement }}</li>
-                </ul>
+        <div class="sec-body">
+          <div class="caps">
+            <div class="cap reveal">
+              <h3><span class="c-idx">A</span>Leadership &amp; Management</h3>
+              <div class="tags">
+                <span class="chip">Team Leadership</span><span class="chip">Strategic Planning</span><span class="chip">Coaching &amp; Mentoring</span><span class="chip">Change Management</span><span class="chip">Stakeholder Engagement</span><span class="chip">Agile / Scrum</span>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Volunteering & Community Section -->
-    <section class="volunteering-section" id="volunteering">
-        <div class="volunteering-container">
-            <h2>Volunteering & Community Engagement</h2>
-
-            <div v-for="vol in config.volunteering" :key="vol.title + vol.period" class="volunteer-card card-base card-hover-medium">
-                <div class="volunteer-header card-header">
-                    <div>
-                        <h3>{{ vol.title }}</h3>
-                        <p class="organization">{{ vol.organization }}</p>
-                        <p v-if="vol.website" class="volunteer-website">
-                            <a :href="vol.website" target="_blank" rel="noopener noreferrer">
-                                🌐 Visit Website →
-                            </a>
-                        </p>
-                    </div>
-                    <span class="volunteer-period">{{ vol.period }}</span>
-                </div>
-
-                <p v-if="vol.description" class="volunteer-description">{{ vol.description }}</p>
-
-                <ul class="volunteer-highlights">
-                    <li v-for="item in vol.highlights" :key="item">{{ item }}</li>
-                </ul>
-
-                <!-- Projects subsection (for Code for Belgium) -->
-                <div v-if="vol.projects && vol.projects.length > 0" class="volunteer-projects">
-                    <h4>Projects</h4>
-                    <div v-for="project in vol.projects" :key="project.name" class="project-item">
-                        <strong>{{ project.name }}:</strong> {{ project.description }}
-                        <p v-if="project.website" class="project-website">
-                            <a :href="project.website" target="_blank" rel="noopener noreferrer">
-                                🔗 View Project →
-                            </a>
-                        </p>
-                    </div>
-                </div>
+            <div class="cap reveal">
+              <h3><span class="c-idx">B</span>Software Management</h3>
+              <div class="tags">
+                <span class="chip">Project Management</span><span class="chip">Risk Management</span><span class="chip">Quality Assurance</span><span class="chip">Budget Management</span><span class="chip">Process Optimization</span>
+              </div>
             </div>
+            <div class="cap reveal">
+              <h3><span class="c-idx">C</span>Java Stack (Primary)</h3>
+              <div class="tags">
+                <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Hibernate</span><span class="chip">Maven / Gradle</span><span class="chip">JUnit</span><span class="chip">Microservices</span>
+              </div>
+            </div>
+            <div class="cap reveal">
+              <h3><span class="c-idx">D</span>Kotlin &amp; .NET</h3>
+              <div class="tags">
+                <span class="chip">Kotlin</span><span class="chip">Kotlin Multiplatform</span><span class="chip">Compose MP</span><span class="chip">Coroutines</span><span class="chip">C# / ASP.NET Core 8</span><span class="chip">Entity Framework</span><span class="chip">Blazor</span>
+              </div>
+            </div>
+            <div class="cap reveal">
+              <h3><span class="c-idx">E</span>Frontend &amp; Web</h3>
+              <div class="tags">
+                <span class="chip">Vue.js</span><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">HTML / CSS</span>
+              </div>
+            </div>
+            <div class="cap reveal">
+              <h3><span class="c-idx">F</span>Vision, ML &amp; DevOps</h3>
+              <div class="tags">
+                <span class="chip">C++20</span><span class="chip">ONNX Runtime</span><span class="chip">OpenCV</span><span class="chip">ML Inference</span><span class="chip">Docker</span><span class="chip">CI / CD</span><span class="chip">PostgreSQL</span><span class="chip">Git</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Featured Projects Timeline -->
-    <section class="timeline-container" id="projects">
-        <div class="timeline">
-            <h2>Featured Projects</h2>
-            
-            <!-- Project 0: ASL-Translator -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="project-card card-base card-hover-strong card-interactive">
-                    <h3>🤟 ASL-Translator - Real-Time Sign Language Recognition</h3>
-                    <p>Desktop application for real-time American Sign Language recognition and translation using computer vision and on-device ML inference. Enables seamless communication between deaf/hard-of-hearing and hearing individuals.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">C++20</span>
-                        <span class="tech-badge">ONNX Runtime</span>
-                        <span class="tech-badge">OpenCV</span>
-                        <span class="tech-badge">Dear ImGui</span>
-                        <span class="tech-badge">CMake</span>
-                    </div>
-                    <div class="project-meta">
-                        <span>📅 2025 - Present</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 1: Octogrid ESB -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="project-card card-base card-hover-strong card-interactive">
-                    <h3>🏥 Octogrid - Enterprise Service Bus</h3>
-                    <p>Leading healthcare interoperability project at Jessa Ziekenhuis. Implementing HL7/FHIR messaging for seamless medical data exchange.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge java">Java</span>
-                        <span class="tech-badge vue">Vue.js</span>
-                        <span class="tech-badge">HL7/FHIR</span>
-                        <span class="tech-badge">ESB</span>
-                    </div>
-                    <div class="project-meta">
-                        <span>📅 2025-2026</span>
-                        <span>🏢 Jessa Ziekenhuis</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 2: Supermarket Automation Research -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="project-card card-base card-hover-strong card-interactive">
-                    <h3>🛒 Supermarket Automation Feasibility Study</h3>
-                    <p>Comprehensive research project analyzing technical feasibility and market viability of automated supermarket systems.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Research</span>
-                        <span class="tech-badge">Analysis</span>
-                        <span class="tech-badge">IoT</span>
-                    </div>
-                    <div class="project-meta">
-                        <span>📅 2022-2023</span>
-                        <span>🏢 University College PXL</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 3: Project Lingo -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="project-card card-base card-hover-strong card-interactive">
-                    <h3>💬 Project Lingo - Full-Stack Application</h3>
-                    <p>Complete backend and frontend development using modern .NET technologies and web standards.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge dotnet">.NET</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">HTML/CSS</span>
-                    </div>
-                    <div class="project-meta">
-                        <span>📅 2021-2022</span>
-                        <span>🏢 University College PXL</span>
-                    </div>
-                </div>
-            </div>
+    <!-- ============ 04 APPROACH ============ -->
+    <section id="approach">
+      <div class="wrap sec">
+        <div class="sec-head">
+          <span class="mono"><span class="idx">04</span> / Approach</span>
+          <div class="label">How I work</div>
+          <div class="note">Leadership and engineering principles I hold to.</div>
         </div>
+        <div class="sec-body">
+          <div class="principles">
+            <div class="principle reveal">
+              <span class="pn">01</span>
+              <div>
+                <h3>Reliability is the feature.</h3>
+                <p>In healthcare, software failure has a cost measured in care, not clicks. I design for correctness, observability and graceful failure before anything else.</p>
+              </div>
+            </div>
+            <div class="principle reveal">
+              <span class="pn">02</span>
+              <div>
+                <h3>Lead by clearing the path.</h3>
+                <p>Seventeen years of leadership taught me the job is to give people a clear problem, the context to solve it, and the cover to do it well — then get out of the way.</p>
+              </div>
+            </div>
+            <div class="principle reveal">
+              <span class="pn">03</span>
+              <div>
+                <h3>Standards &amp; sustainability over heroics.</h3>
+                <p>HL7, FHIR, reusable blueprints, open-source governance. Systems built on shared standards outlive any single clever solution — and keep working after the team changes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    
-    <!-- GitHub Projects Section -->
-    <section class="github-section" id="github">
-        <div class="github-container">
-            <div class="section-header">
-                <h2>GitHub Projects</h2>
-                <button @click="toggleRepoManager" 
-                        class="manage-repos-btn"
-                        :aria-expanded="showRepoManager"
-                        aria-controls="repo-manager">
-                    {{ showRepoManager ? '✕ Close' : '⚙️ Manage Repositories' }}
-                </button>
-            </div>
-            
-            <!-- Repository Manager -->
-            <div v-if="showRepoManager" 
-                 id="repo-manager" 
-                 class="repo-manager"
-                 role="region"
-                 aria-label="Repository management">
-                <h3>Manage Featured Repositories</h3>
-                <div class="repo-manager-content">
-                    <div class="current-repos">
-                        <h4>Current Featured Repos:</h4>
-                        <div v-for="(repo, index) in tempRepos" :key="index" class="repo-item">
-                            <span>{{ repo }}</span>
-                            <button @click="removeRepository(index)" 
-                                    class="remove-btn"
-                                    :aria-label="`Remove ${repo}`">
-                                Remove
-                            </button>
-                        </div>
-                    </div>
-                    <div class="add-repo">
-                        <input
-                            v-model="newRepoName"
-                            @keyup.enter="addRepository"
-                            placeholder="Enter repository name"
-                            class="repo-input"
-                            aria-label="Repository name"
-                        >
-                        <button @click="addRepository" class="add-btn">Add Repository</button>
-                    </div>
-                    <div class="manager-actions">
-                        <button @click="saveRepositories" class="save-btn">💾 Save Changes</button>
-                        <button @click="cancelRepoChanges" class="cancel-btn">Cancel</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Loading State with Skeleton -->
-            <div v-if="loading" class="github-grid" aria-live="polite" aria-busy="true">
-                <div v-for="n in 3" :key="n" class="github-card skeleton" aria-hidden="true">
-                    <div class="skeleton-title"></div>
-                    <div class="skeleton-text"></div>
-                    <div class="skeleton-text"></div>
-                    <div class="skeleton-stats"></div>
-                </div>
-            </div>
-            
-            <!-- Error State -->
-            <div v-else-if="error" class="error-state" role="alert">
-                <h3>⚠️ Unable to Load Repositories</h3>
-                <p>{{ error }}</p>
-                <button @click="retryFetchRepositories" class="retry-btn">
-                    🔄 Retry
-                </button>
-            </div>
-            
-            <!-- GitHub Projects Grid -->
-            <div v-else-if="repositories.length > 0" class="github-grid">
-                <article v-for="repo in repositories" 
-                         :key="repo.name" 
-                         class="github-card">
-                    <h3>{{ repo.name }}</h3>
-                    <p class="repo-description">{{ repo.description || 'No description available' }}</p>
-                    
-                    <div class="github-stats">
-                        <span v-if="repo.language" 
-                              class="repo-language">
-                            <span class="language-dot" :class="getLanguageClass(repo.language)"></span>
-                            <span class="tech-badge" :class="getLanguageClass(repo.language)">
-                                {{ repo.language }}
-                            </span>
-                        </span>
-                        <span v-if="repo.stargazers_count" title="Stars">⭐ {{ repo.stargazers_count }}</span>
-                        <span v-if="repo.forks_count" title="Forks">🔀 {{ repo.forks_count }}</span>
-                        <span v-if="repo.updated_at" :title="'Last updated: ' + new Date(repo.updated_at).toLocaleDateString()">
-                            📅 {{ formatDate(repo.updated_at) }}
-                        </span>
-                        <span v-if="repo._cached" class="repo-cache-indicator" title="Loaded from cache">
-                            💾
-                        </span>
-                    </div>
-                    
-                    <a :href="repo.html_url" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       class="github-link">
-                        View on GitHub →
-                    </a>
-                </article>
-            </div>
-            
-            <!-- Empty State -->
-            <div v-else class="empty-state">
-                <p>No repositories configured. Click "Manage Repositories" to add some!</p>
-            </div>
+
+    <!-- ============ 05 COMMUNITY ============ -->
+    <section id="community">
+      <div class="wrap sec">
+        <div class="sec-head">
+          <span class="mono"><span class="idx">05</span> / Community</span>
+          <div class="label">Civic tech &amp; volunteering</div>
+          <div class="note">Technology in service of people and public good.</div>
         </div>
+        <div class="sec-body">
+          <div class="reveal">
+            <div class="civic-head">
+              <div class="civic-org">Code for Belgium</div>
+              <div class="civic-when">2025 — Present · Volunteer</div>
+            </div>
+            <p class="civic-desc">Contributing to civic-technology projects that improve government services and citizen engagement — building open-source solutions for public-sector challenges alongside government agencies and civic organisations.</p>
+            <div class="civic-sub">
+              <div class="civic-head">
+                <div class="civic-org" style="font-size:clamp(1.2rem,2.4vw,1.5rem);">Student Commission Member</div>
+                <div class="civic-when">2021 — 2024</div>
+              </div>
+              <p class="civic-desc">Hogeschool PXL — Applied Informatics. Represented student interests in program-level decisions, gave feedback on curriculum and exam schedules, and helped improve student-support services.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    
-    <!-- Languages Section -->
-    <section class="languages-section" id="languages">
-        <div class="languages-container">
-            <h2>Languages</h2>
-            <div class="languages-grid">
-                <div v-for="lang in config.languages" :key="lang.language" class="language-item">
-                    <span class="language-name">{{ lang.language }}</span>
-                    <span class="language-level">{{ lang.level }}</span>
-                </div>
-            </div>
+
+    <!-- ============ 06 ABOUT (edu + langs) ============ -->
+    <section id="about">
+      <div class="wrap sec">
+        <div class="sec-head">
+          <span class="mono"><span class="idx">06</span> / About</span>
+          <div class="label">Education &amp; languages</div>
+          <div class="note">Foundations and the languages I work in.</div>
         </div>
+        <div class="sec-body">
+          <div class="col-2">
+            <div>
+              <div class="block-label">Education</div>
+              <div class="edu-item reveal">
+                <div class="edu-deg">Professional Bachelor — Applied Computer Science in Software Management</div>
+                <div class="edu-spec">Software Management &amp; (partial) Application Development</div>
+                <div class="edu-meta">University College PXL · Hasselt · 2021—2026</div>
+              </div>
+              <div class="edu-item reveal">
+                <div class="edu-deg">Electronics &amp; Measurement / Control Technology</div>
+                <div class="edu-spec">Graduated with distinction (75%)</div>
+                <div class="edu-meta">Technicum (Hasp-O-Centrum) · Sint-Truiden · 1987—1994</div>
+              </div>
+            </div>
+            <div>
+              <div class="block-label">Languages</div>
+              <div class="langs reveal">
+                <div class="lang"><span class="ln">Dutch</span><span class="bar"></span><span class="ll">Native</span></div>
+                <div class="lang"><span class="ln">English</span><span class="bar"></span><span class="ll">Fluent</span></div>
+                <div class="lang"><span class="ln">French</span><span class="bar"></span><span class="ll">Good</span></div>
+                <div class="lang"><span class="ln">German</span><span class="bar"></span><span class="ll">Good</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; {{ new Date().getFullYear() }} {{ config.name }}. All rights reserved.</p>
-            <p class="footer-meta">
-                Built with Vue.js | Hosted on GitHub Pages |
-                <a :href="`mailto:${config.email}`">{{ config.email }}</a>
-            </p>
-        </div>
-    </footer>
-    
-    <!-- Mobile Menu Toggle (NEW) -->
-    <button @click="toggleMobileMenu" 
-            class="mobile-nav-toggle"
-            :class="{ open: mobileMenuOpen }"
-            :aria-expanded="mobileMenuOpen"
-            aria-label="Toggle navigation menu"
-            aria-controls="scroll-nav-menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-    </button>
-    
-    <!-- Theme Toggle Button (NEW) -->
-    <button @click="toggleTheme" 
-            class="theme-toggle" 
-            :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
-            :title="'Toggle theme (Alt+T) - Currently ' + (darkMode ? 'Dark' : 'Light') + ' mode'">
-        {{ darkMode ? '☀️' : '🌙' }}
-    </button>
-    
-    <!-- Scroll Navigation -->
-    <nav class="scroll-nav" 
-         :class="{ visible: showScrollNav }" 
-         aria-label="Quick navigation"
-         role="navigation">
-        <div id="scroll-nav-menu"
-             class="scroll-nav-menu" 
-             :class="{ 'mobile-open': mobileMenuOpen }">
-            <div class="scroll-nav-title">
-                Jump to Section
-                <span class="scroll-percentage-inline" 
-                      :aria-label="`Page scroll progress: ${scrollPercentage}%`">
-                    {{ scrollPercentage }}
-                </span>
-            </div>
-            <button class="scroll-nav-btn" 
-                    :class="{ active: activeSection === 'soft-skills' }"
-                    @click="scrollToSection('soft-skills')"
-                    aria-label="Navigate to Soft Skills section">
-                Soft Skills
-            </button>
-            <button class="scroll-nav-btn" 
-                    :class="{ active: activeSection === 'technical-skills' }"
-                    @click="scrollToSection('technical-skills')"
-                    aria-label="Navigate to Technical Skills section">
-                Technical Skills
-            </button>
-            <button class="scroll-nav-btn" 
-                    :class="{ active: activeSection === 'experience' }"
-                    @click="scrollToSection('experience')"
-                    aria-label="Navigate to Experience section">
-                Experience
-            </button>
-            <button class="scroll-nav-btn" 
-                    :class="{ active: activeSection === 'education' }"
-                    @click="scrollToSection('education')"
-                    aria-label="Navigate to Education section">
-                Education
-            </button>
-            <button class="scroll-nav-btn" 
-                    :class="{ active: activeSection === 'volunteering' }"
-                    @click="scrollToSection('volunteering')"
-                    aria-label="Navigate to Volunteering section">
-                Volunteering
-            </button>
-            <button class="scroll-nav-btn" 
-                    :class="{ active: activeSection === 'projects' }"
-                    @click="scrollToSection('projects')"
-                    aria-label="Navigate to Featured Projects section">
-                Featured Projects
-            </button>
-            <button class="scroll-nav-btn" 
-                    :class="{ active: activeSection === 'github' }"
-                    @click="scrollToSection('github')"
-                    aria-label="Navigate to GitHub Projects section">
-                GitHub Projects
-            </button>
-        </div>
-        <button class="scroll-top-btn" 
-                @click="scrollToTop" 
-                title="Back to top" 
-                aria-label="Scroll to top of page">
-            ↑
-        </button>
-    </nav>
-    
-    <!-- Notification Component (NEW) -->
-    <transition name="notification">
-        <div v-if="notification" 
-             class="notification" 
-             :class="`notification-${notification.type}`"
-             role="alert"
-             aria-live="polite"
-             aria-atomic="true">
-            <strong>{{ notification.title }}</strong>
-            <p>{{ notification.message }}</p>
-            <button @click="closeNotification" 
-                    aria-label="Close notification"
-                    title="Close (or press Escape)">
-                ×
-            </button>
-        </div>
-    </transition>
-</div>
 
-<!-- External JavaScript -->
-<script type="module" src="/assets/js/app.js"></script>
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <span class="mono"><span class="idx">07</span> / Contact</span>
+        <h2 class="reveal" style="margin-top:18px;">Let's build<br />something solid.</h2>
+        <p class="lead reveal">Open to engineering-leadership and healthcare-systems work. The fastest way to reach me is below.</p>
+        <div class="contact-grid reveal">
+          <a class="btn primary" href="mailto:steve.appeltants@outlook.com">Email me
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          </a>
+          <a class="btn" href="https://github.com/steveappeltantsPXL" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/steve-appeltants/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<!-- Keyboard Shortcuts Help (Hidden, for screen readers) -->
-<div class="sr-only" aria-live="polite" role="status">
-    <p>Keyboard shortcuts available: Alt+1 through Alt+7 to navigate sections, Alt+T to toggle theme, Escape to close dialogs</p>
-</div>
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <span>© <span id="year">2026</span> Steve Appeltants</span>
+      <span>Belgium</span>
+      <span>Built &amp; hosted on GitHub Pages</span>
+    </div>
+  </footer>
 
+  <template id="__bundler_thumbnail" data-bg-color="#F3EFE6">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#F3EFE6"/>
+      <circle cx="372" cy="300" r="22" fill="#1F39D6"/>
+      <text x="600" y="470" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="320" letter-spacing="-12" fill="#15140F" text-anchor="middle">SA</text>
+      <text x="600" y="560" font-family="'JetBrains Mono', monospace" font-size="34" letter-spacing="14" fill="#6E6A5C" text-anchor="middle">SOFTWARE MANAGER</text>
+    </svg>
+  </template>
+  <script src="assets/app.js"></script>
 </body>
 </html>
