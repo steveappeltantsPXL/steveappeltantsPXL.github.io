@@ -66,4 +66,39 @@
   /* ---- year ---------------------------------------------------- */
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
+
+  /* ---- mobile menu -------------------------------------------- */
+  var menuBtn = document.getElementById("menu-toggle");
+  var navList = document.getElementById("primary-nav");
+  function closeMenu() {
+    if (!navList) return;
+    navList.classList.remove("open");
+    menuBtn.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "Open menu");
+  }
+  function openMenu() {
+    navList.classList.add("open");
+    menuBtn.classList.add("open");
+    menuBtn.setAttribute("aria-expanded", "true");
+    menuBtn.setAttribute("aria-label", "Close menu");
+  }
+  if (menuBtn && navList) {
+    menuBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (navList.classList.contains("open")) closeMenu(); else openMenu();
+    });
+    // close when a link is tapped
+    navList.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeMenu();
+    });
+    // close on tap outside
+    document.addEventListener("click", function (e) {
+      if (navList.classList.contains("open") && !e.target.closest(".nav") ) closeMenu();
+    });
+    // close on Escape
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
 })();

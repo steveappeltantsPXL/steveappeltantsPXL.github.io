@@ -57,7 +57,7 @@
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top"><span class="dot"></span>Steve&nbsp;Appeltants</a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="primary-nav">
         <a href="#work" data-sec="work" class="num" data-n="01">Work</a>
         <a href="#experience" data-sec="experience" class="num" data-n="02">Experience</a>
         <a href="#capabilities" data-sec="capabilities" class="num" data-n="03">Stack</a>
@@ -66,9 +66,14 @@
         <a href="#about" data-sec="about" class="num" data-n="06">About</a>
         <a href="#contact" data-sec="contact" class="cta">Contact →</a>
       </nav>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
-        <span id="theme-label">Dark</span>
-      </button>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
+          <span id="theme-label">Dark</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
