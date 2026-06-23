@@ -1,79 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found | Steve Appeltants</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f89820 0%, #7F52FF 100%);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-        }
-        
-        .error-container {
-            text-align: center;
-            max-width: 600px;
-        }
-        
-        .error-code {
-            font-size: 8rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .btn-home {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            color: #fff;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-home:hover {
-            background: rgba(255, 255, 255, 0.35);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found · Steve Appeltants</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #F3EFE6; --ink: #15140F; --ink-soft: #3A382F; --muted: #6E6A5C;
+      --faint: #A6A092; --hairline: rgba(21,20,15,0.16); --accent: #1F39D6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --paper:#100F0C; --ink:#EFEBDF; --ink-soft:#C9C4B6; --muted:#8E897A;
+        --faint:#5E5A4E; --hairline:rgba(239,235,223,0.16); --accent:#6E86FF; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper); color: var(--ink);
+      font-family: "Newsreader", Georgia, serif;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: clamp(20px,5vw,72px); -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 640px; width: 100%; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.72rem;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .mono .idx { color: var(--accent); }
+    .code {
+      font-family: "Space Grotesk", system-ui, sans-serif; font-weight: 700;
+      font-size: clamp(5rem, 22vw, 13rem); line-height: 0.9; letter-spacing: -0.04em;
+      color: var(--ink); margin: 0.18em 0 0;
+    }
+    h1 { font-family: "Space Grotesk", system-ui, sans-serif; font-weight: 600;
+      font-size: clamp(1.4rem, 4vw, 2rem); letter-spacing: -0.02em; margin-top: 0.4em; }
+    p { color: var(--ink-soft); font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+      max-width: 42ch; margin-top: 14px; }
+    .rule { height: 1px; background: var(--hairline); margin: 32px 0; }
+    .home {
+      font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.74rem;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      color: var(--ink); border: 1px solid var(--hairline); border-radius: 2px;
+      padding: 12px 18px; display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .home:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  </style>
 </head>
 <body>
-<div class="error-container">
-    <div class="error-code">404</div>
-    <h1>Page Not Found</h1>
-    <p>Sorry, the page you're looking for doesn't exist or has been moved.</p>
-    <a href="/" class="btn-home">← Back to Home</a>
-</div>
+  <div class="wrap">
+    <span class="mono"><span class="idx">ERR</span> / 404 · Not Found</span>
+    <div class="code">404</div>
+    <h1>This page doesn't exist.</h1>
+    <p>The page you're looking for has moved or never existed. Let's get you back to solid ground.</p>
+    <div class="rule"></div>
+    <a class="home" href="/">← Back to home</a>
+  </div>
 </body>
 </html>

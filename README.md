@@ -1,82 +1,78 @@
-# Steve Appeltants - Portfolio & CV
+# Steve Appeltants — Portfolio
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success)](https://steveappeltantspxl.github.io/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Professional portfolio and curriculum vitae for Steve Appeltants – Prof. Bachelor Applied 
-Computer Science – Software Management specializing in healthcare technology and enterprise solutions.
+Personal portfolio for **Steve Appeltants** — Software Manager with 17+ years
+leading teams, building hospital interoperability, agentic AI architecture and
+on-device ML.
 
 ## 🚀 Live Site
 
-Visit the live portfolio: [https://steveappeltantspxl.github.io/](https://steveappeltantspxl.github.io/)
+[https://steveappeltantspxl.github.io/](https://steveappeltantspxl.github.io/)
 
 ## 📋 About
 
-This portfolio showcases:
-- **Professional Experience** in software management and development
-- **Technical Skills** in Java, Kotlin, .NET, and modern web technologies
-- **Education** from University College PXL in Applied Informatics
-- **Featured Projects** including healthcare interoperability and enterprise solutions
-- **Dynamic GitHub Integration** for showcasing the latest repositories
+A single-page portfolio covering:
+
+- **Selected work** — Octogrid ESB (Jessa Hospital), Digitaal Zorgkompas
+  (PXL Smart ICT), Visear / ASL-Translator, Project Lingo
+- **Experience** — internship, IT projects and research at PXL & Jessa Hospital
+- **Technical stack** — leadership, Java/Kotlin/.NET, vision & ML, DevOps
+- **Approach** — engineering and leadership principles
+- **Community** — Code for Belgium, Student Commission
+- **Education & languages**
 
 ## 🛠 Tech Stack
 
-### Frontend
-- **Vue.js 3** – Reactive JavaScript framework
-- **Vanilla CSS** – Custom styling with CSS variables
-- **HTML5** – Semantic markup
+Fully **static** — no framework, no build step, no API token.
+
+- **HTML5** — semantic markup
+- **CSS** — custom properties, light/dark theming, responsive grid
+- **Vanilla JavaScript** — theme toggle, scroll progress, scroll-reveal,
+  active-section nav
+- **Google Fonts** — Space Grotesk, Newsreader, JetBrains Mono
 
 ### Features
-- 📱 Fully responsive design
-- 🎨 Java/Kotlin/C# themed color scheme
-- 🔄 Dynamic GitHub repository integration
-- 📊 Interactive project timeline
-- 🚀 Fast loading with CDN resources
-- ♿ Accessible navigation
-- 🎯 SEO optimized with structured data
 
-## 🔐 GitHub API Token Setup
-
-This portfolio dynamically fetches and displays your latest GitHub repositories using the GitHub API. To enable this feature with a higher rate limit, you need to configure a GitHub Personal Access Token:
-
-### Option 1: Secure Setup (Recommended) – Using GitHub Actions
-
-The project includes a GitHub Actions workflow that securely injects a token at deployment time:
-
-1. **Create a Personal Access Token:**
-   - Go to GitHub Settings → Developer settings → Personal access tokens (classic)
-   - Click "Generate new token (classic)"
-   - Give it a name (e.g., "Portfolio GitHub Token")
-   - Select scopes: `public_repo`, `read:user`
-   - Click "Generate token" and **copy it immediately** (you won't see it again)
-
-2. **Add Token as Repository Secret:**
-   - Go to your repository settings → Secrets and variables → Actions → New repository secret
-   - Name: `GITHUB_PAT`
-   - Value: Paste your Personal Access Token
-   - Click "Add secret"
-
-3. **How It Works:**
-   - When you push to `main`, GitHub Actions automatically:
-     - Checks out your code
-     - Injects your token from the secret
-     - Deploys to GitHub Pages
-   - Your actual token is **never** committed to the repository
-   - Only GitHub Actions and GitHub Pages servers see it
-
-### Option 2: Manual Setup
-
-If you don't want to use GitHub Actions, you can add the token directly to `assets/js/app.js`:
-
-1. Open `assets/js/app.js`
-2. Find the line: `githubToken: '__GITHUB_TOKEN_PLACEHOLDER__'`
-3. Replace with: `githubToken: 'your-actual-token-here'`
-
-**Note:** This exposes your token in the public repository. Regenerate the token regularly and delete it if security is compromised.
-
-### API Rate Limits
-
-- **Without Token:** 60 requests/hour (very limiting)
-- **With Token:** 5,000 requests/hour (sufficient for regular updates)
+- 🌗 Light / dark mode (remembers your choice, respects system preference)
+- 📱 Fully responsive
+- ♿ Accessible navigation and reduced-motion support
+- 🔍 SEO + social-preview (Open Graph) meta
+- ⚡ No dependencies to build or deploy — just static files
 
 ## 📁 Project Structure
+
+```
+index.html            Portfolio page
+assets/styles.css      All styling
+assets/app.js          Theme toggle, scroll, nav
+.nojekyll              Serve files as-is on GitHub Pages
+```
+
+## 🔧 Local Preview
+
+No build needed. Open `index.html` in a browser, or serve the folder:
+
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+## 🚢 Deploy
+
+This is a GitHub **user site**, so GitHub Pages serves the `index.html` at the
+repository root automatically.
+
+```bash
+git add -A
+git commit -m "Update portfolio"
+git push
+```
+
+Live within ~1 minute at https://steveappeltantspxl.github.io/
+(hard-refresh with Ctrl/Cmd + Shift + R to clear the cache).
+
+## 📄 License
+
+[MIT](LICENSE) © Steve Appeltants
